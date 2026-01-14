@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONBEX® Beta Access | Apply Now</title>
+    <meta name="description" content="Apply for early access to CONBEX - Canada's AI-powered procurement intelligence platform.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='45' fill='%231E3A5F'/%3E%3Ccircle cx='50' cy='50' r='18' fill='%2338BDF8'/%3E%3C/svg%3E">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --navy: #1E3A5F;
+            --navy-dark: #0F172A;
+            --ocean: #0284C7;
+            --sky: #38BDF8;
+            --sky-light: #7DD3FC;
+            --gold: #F59E0B;
+            --red: #EF4444;
+            --green: #22C55E;
+        }
+        
+        [data-theme="dark"] {
+            --bg-primary: #0A0F1C;
+            --bg-secondary: #0F172A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --card-bg: rgba(255,255,255,0.03);
+            --card-bg-hover: rgba(255,255,255,0.06);
+            --border: rgba(255,255,255,0.08);
+            --input-bg: rgba(255,255,255,0.05);
+        }
+        
+        [data-theme="light"] {
+            --bg-primary: #F0F4F8;
+            --bg-secondary: #E2E8F0;
+            --text-primary: #1E3A5F;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --card-bg: rgba(255,255,255,0.8);
+            --card-bg-hover: rgba(255,255,255,0.95);
+            --border: rgba(30,58,95,0.1);
+            --input-bg: rgba(255,255,255,0.9);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        /* Background */
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            opacity: 0.5;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(2, 132, 199, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.06) 0%, transparent 50%);
+        }
+        
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-bottom: 8px;
+        }
+        
+        .logo-o {
+            width: 28px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 -1px;
+            vertical-align: middle;
+        }
+        
+        .logo-o svg { 
+            width: 100%; 
+            height: 100%;
+            display: block;
+        }
+        
+        [data-theme="dark"] .logo-ring { stroke: rgba(255,255,255,0.9); }
+        [data-theme="light"] .logo-ring { stroke: var(--navy); }
+        
+        .logo-core { fill: var(--sky); }
+        
+        .logo .reg {
+            font-size: 10px;
+            vertical-align: super;
+            position: relative;
+            top: -10px;
+        }
+        
+        .beta-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--ocean), var(--sky));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-left: 8px;
+        }
+        
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+        
+        .page-subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: all 0.3s;
+        }
+        
+        .step-dot.active {
+            background: var(--sky);
+            box-shadow: 0 0 10px var(--sky);
+        }
+        
+        .step-dot.completed {
+            background: var(--green);
+        }
+        
+        /* Cards Container */
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            flex: 1;
+        }
+        
+        /* Step Section */
+        .step-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .step-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* User Type Selection */
+        .type-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .type-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .type-card:hover {
+            background: var(--card-bg-hover);
+            border-color: var(--sky);
+            transform: translateY(-4px);
+        }
+        
+        .type-card.selected {
+            border-color: var(--sky);
+            background: rgba(56, 189, 248, 0.1);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+        
+        .type-card .icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .type-card .icon svg {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .type-card.suppliers .icon { background: rgba(2, 132, 199, 0.15); color: var(--ocean); }
+        .type-card.publishers .icon { background: rgba(234, 179, 8, 0.15); color: var(--gold); }
+        .type-card.providers .icon { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+        
+        .type-card .title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        
+        .type-card .desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        
+        /* Form Card */
+        .form-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+        }
+        
+        .form-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .form-title .user-type-tag {
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-title .user-type-tag.suppliers { background: rgba(2, 132, 199, 0.15); color: var(--ocean); }
+        .form-title .user-type-tag.publishers { background: rgba(234, 179, 8, 0.15); color: var(--gold); }
+        .form-title .user-type-tag.providers { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        
+        .form-label .required {
+            color: var(--red);
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--sky);
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+        }
+        
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: var(--text-muted);
+        }
+        
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 44px;
+        }
+        
+        .form-textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-top: 20px;
+            padding: 16px;
+            background: var(--input-bg);
+            border-radius: 12px;
+        }
+        
+        .checkbox-input {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            appearance: none;
+            background: transparent;
+            transition: all 0.2s;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .checkbox-input:checked {
+            background: var(--sky);
+            border-color: var(--sky);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .checkbox-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        
+        .checkbox-label a {
+            color: var(--sky);
+            text-decoration: none;
+        }
+        
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--ocean), var(--sky));
+            color: white;
+            flex: 1;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.3);
+        }
+        
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--card-bg-hover);
+            color: var(--text-primary);
+        }
+        
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Success Screen */
+        .success-screen {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(34, 197, 94, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            animation: successPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes successPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.3); }
+            50% { box-shadow: 0 0 0 20px rgba(34, 197, 94, 0); }
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            color: var(--green);
+        }
+        
+        .success-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .success-message {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 400px;
+            margin: 0 auto 32px;
+        }
+        
+        .success-ref {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: inline-block;
+            margin-bottom: 32px;
+        }
+        
+        .success-ref .label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        
+        .success-ref .code {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--sky);
+            letter-spacing: 2px;
+        }
+        
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .theme-toggle:hover { border-color: var(--sky); }
+        .theme-toggle svg { width: 20px; height: 20px; color: var(--text-secondary); display: block; }
+        .theme-toggle .sun { display: none; }
+        [data-theme="light"] .theme-toggle .sun { display: block; }
+        [data-theme="light"] .theme-toggle .moon { display: none; }
+        
+        /* Back Link */
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            color: var(--sky);
+        }
+        
+        .back-link svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px;
+            margin-top: auto;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .type-cards {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .type-card {
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 16px;
+            }
+            
+            .type-card .icon {
+                margin: 0;
+                width: 44px;
+                height: 44px;
+            }
+            
+            .type-card .content { flex: 1; }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-card {
+                padding: 24px 20px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .btn-row {
+                flex-direction: column-reverse;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 24px 16px;
+            }
+            
+            .logo {
+                font-size: 26px;
+            }
+            
+            .logo-o {
+                width: 22px;
+                height: 26px;
+            }
+            
+            .back-link {
+                top: 14px;
+                left: 14px;
+            }
+            
+            .theme-toggle {
+                top: 14px;
+                right: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <!-- Back Link -->
+    <a href="index.html" class="back-link">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Back
+    </a>
+    
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+    </button>
+    
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <a href="index.html" class="logo">
+                C<span class="logo-o">
+                    <svg viewBox="0 0 72 72">
+                        <circle class="logo-ring" cx="36" cy="36" r="22" fill="none" stroke-width="5"/>
+                        <circle class="logo-core" cx="36" cy="36" r="6"/>
+                    </svg>
+                </span>NBEX<span class="reg">®</span>
+                <span class="beta-badge">Beta</span>
+            </a>
+            <h1 class="page-title">Apply for Beta Access</h1>
+            <p class="page-subtitle">Join our exclusive early access program and help shape the future of procurement intelligence in Canada.</p>
+        </header>
+        
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="step-dot active" id="step1-dot"></div>
+            <div class="step-dot" id="step2-dot"></div>
+            <div class="step-dot" id="step3-dot"></div>
+        </div>
+        
+        <!-- Step 1: User Type Selection -->
+        <div class="step-section active" id="step1">
+            <div class="type-cards">
+                <!-- Supplier -->
+                <div class="type-card suppliers" onclick="selectType('suppliers')">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <div class="content">
+                        <div class="title">Supplier</div>
+                        <div class="desc">Seeking government contracts & procurement opportunities</div>
+                    </div>
+                </div>
+                
+                <!-- Publisher -->
+                <div class="type-card publishers" onclick="selectType('publishers')">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <div class="content">
+                        <div class="title">Publisher</div>
+                        <div class="desc">Managing procurement processes & posting opportunities</div>
+                    </div>
+                </div>
+                
+                <!-- Service Provider -->
+                <div class="type-card providers" onclick="selectType('providers')">
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div class="content">
+                        <div class="title">Service Provider</div>
+                        <div class="desc">Offering consulting & specialized procurement services</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Step 2: Application Form -->
+        <div class="step-section" id="step2">
+            <div class="form-card">
+                <div class="form-title">
+                    Your Information
+                    <span class="user-type-tag" id="userTypeTag"></span>
+                </div>
+                
+                <form id="betaForm" action="https://formsubmit.co/info@conbex.ca" method="POST" onsubmit="return prepareSubmit(event)">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New CONBEX Beta Application">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" id="successUrl">
+                    <input type="hidden" name="User Type" id="hiddenUserType">
+                    <input type="hidden" name="Reference Code" id="hiddenRefCode">
+                    <input type="hidden" name="Submitted At" id="hiddenTimestamp">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">First Name <span class="required">*</span></label>
+                            <input type="text" class="form-input" name="First Name" id="firstName" placeholder="Enter first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name <span class="required">*</span></label>
+                            <input type="text" class="form-input" name="Last Name" id="lastName" placeholder="Enter last name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Email Address <span class="required">*</span></label>
+                            <input type="email" class="form-input" name="Email" id="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" name="Phone" id="phone" placeholder="+1 (xxx) xxx-xxxx">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Organization / Company <span class="required">*</span></label>
+                        <input type="text" class="form-input" name="Organization" id="organization" placeholder="Your company or organization name" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Job Title</label>
+                            <input type="text" class="form-input" name="Job Title" id="jobTitle" placeholder="Your role or position">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Company Size <span class="required">*</span></label>
+                            <select class="form-select" name="Company Size" id="companySize" required>
+                                <option value="">Select size</option>
+                                <option value="1-10">1-10 employees</option>
+                                <option value="11-50">11-50 employees</option>
+                                <option value="51-200">51-200 employees</option>
+                                <option value="201-500">201-500 employees</option>
+                                <option value="501-1000">501-1,000 employees</option>
+                                <option value="1001-5000">1,001-5,000 employees</option>
+                                <option value="5001+">5,001+ employees</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Industry Sector <span class="required">*</span></label>
+                            <select class="form-select" name="Industry Sector" id="sector" required onchange="toggleOtherField('sector', 'sectorOther')">
+                                <option value="">Select sector</option>
+                                <option value="Construction">Construction & Infrastructure</option>
+                                <option value="IT">Information Technology & Software</option>
+                                <option value="Professional Services">Professional Services & Consulting</option>
+                                <option value="Healthcare">Healthcare & Medical</option>
+                                <option value="Manufacturing">Manufacturing & Industrial</option>
+                                <option value="Engineering">Engineering & Architecture</option>
+                                <option value="Transportation">Transportation & Logistics</option>
+                                <option value="Environmental">Environmental & Sustainability</option>
+                                <option value="Security">Security & Defense</option>
+                                <option value="Education">Education & Training</option>
+                                <option value="Finance">Finance & Accounting</option>
+                                <option value="Communications">Communications & Marketing</option>
+                                <option value="Energy">Energy & Utilities</option>
+                                <option value="Food Services">Food Services & Hospitality</option>
+                                <option value="Real Estate">Real Estate & Property</option>
+                                <option value="Legal">Legal Services</option>
+                                <option value="Research">Research & Development</option>
+                                <option value="Other">Other (please specify)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="sectorOtherGroup" style="display: none;">
+                            <label class="form-label">Specify Sector <span class="required">*</span></label>
+                            <input type="text" class="form-input" name="Sector Other" id="sectorOther" placeholder="Enter your industry sector">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Business Type <span class="required">*</span></label>
+                            <select class="form-select" name="Business Type" id="businessType" required onchange="toggleOtherField('businessType', 'businessTypeOther')">
+                                <option value="">Select type</option>
+                                <option value="Sole Proprietorship">Sole Proprietorship</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Corporation">Corporation (Inc./Ltd.)</option>
+                                <option value="Federal Corporation">Federal Corporation</option>
+                                <option value="Provincial Corporation">Provincial Corporation</option>
+                                <option value="Cooperative">Cooperative</option>
+                                <option value="Non-Profit">Non-Profit Organization</option>
+                                <option value="Social Enterprise">Social Enterprise</option>
+                                <option value="Indigenous Business">Indigenous-owned Business</option>
+                                <option value="Joint Venture">Joint Venture</option>
+                                <option value="Government Entity">Government Entity</option>
+                                <option value="Crown Corporation">Crown Corporation</option>
+                                <option value="Academic Institution">Academic Institution</option>
+                                <option value="Other">Other (please specify)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="businessTypeOtherGroup" style="display: none;">
+                            <label class="form-label">Specify Business Type <span class="required">*</span></label>
+                            <input type="text" class="form-input" name="Business Type Other" id="businessTypeOther" placeholder="Enter your business type">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Province <span class="required">*</span></label>
+                            <select class="form-select" name="Province" id="province" required>
+                                <option value="">Select province</option>
+                                <option value="AB">Alberta</option>
+                                <option value="BC">British Columbia</option>
+                                <option value="MB">Manitoba</option>
+                                <option value="NB">New Brunswick</option>
+                                <option value="NL">Newfoundland and Labrador</option>
+                                <option value="NS">Nova Scotia</option>
+                                <option value="NT">Northwest Territories</option>
+                                <option value="NU">Nunavut</option>
+                                <option value="ON">Ontario</option>
+                                <option value="PE">Prince Edward Island</option>
+                                <option value="QC">Quebec</option>
+                                <option value="SK">Saskatchewan</option>
+                                <option value="YT">Yukon</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">City <span class="required">*</span></label>
+                            <input type="text" class="form-input" name="City" id="city" placeholder="Enter city" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" id="indigenousQuestion" style="display: none;">
+                        <label class="form-label">Indigenous Business Status</label>
+                        <select class="form-select" name="Indigenous Status" id="indigenousStatus">
+                            <option value="">Select status</option>
+                            <option value="Indigenous-owned">Yes - Indigenous-owned business</option>
+                            <option value="CCAB Certified">Yes - CCAB certified</option>
+                            <option value="PSIB Registered">Yes - PSIB registered</option>
+                            <option value="IBD Listed">Yes - Indigenous Business Directory listed</option>
+                            <option value="In Progress">Certification in progress</option>
+                            <option value="No">No</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Primary Interest in CONBEX <span class="required">*</span></label>
+                        <select class="form-select" name="Primary Interest" id="primaryInterest" required>
+                            <option value="">Select primary interest</option>
+                            <option value="Find Opportunities">Finding government contract opportunities</option>
+                            <option value="Bid Management">Managing bids and proposals</option>
+                            <option value="Compliance Tracking">Compliance and certification tracking</option>
+                            <option value="Teaming Partners">Finding teaming/subcontracting partners</option>
+                            <option value="Market Intelligence">Market intelligence and analytics</option>
+                            <option value="Indigenous Procurement">Indigenous procurement (PSIB) opportunities</option>
+                            <option value="Document Analysis">AI-powered document analysis</option>
+                            <option value="Publish Opportunities">Publishing procurement opportunities</option>
+                            <option value="All Features">Interested in all features</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Additional Comments</label>
+                        <textarea class="form-textarea" name="Comments" id="comments" placeholder="Tell us more about your procurement needs, challenges, or what features would be most valuable to you..."></textarea>
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" class="checkbox-input" id="terms" required>
+                        <label class="checkbox-label" for="terms">
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I understand that CONBEX is in beta and features may change.
+                        </label>
+                    </div>
+                    
+                    <div class="checkbox-group" style="margin-top: 12px; background: transparent; padding: 0;">
+                        <input type="checkbox" class="checkbox-input" name="Newsletter" id="newsletter" value="Yes">
+                        <label class="checkbox-label" for="newsletter">
+                            Keep me updated with CONBEX news, product updates, and procurement insights.
+                        </label>
+                    </div>
+                    
+                    <div class="btn-row">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(1)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                            </svg>
+                            Back
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Submit Application
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Step 3: Success -->
+        <div class="step-section" id="step3">
+            <div class="success-screen">
+                <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <h2 class="success-title">Application Submitted!</h2>
+                <p class="success-message">Thank you for applying to the CONBEX beta program. We'll review your application and get back to you within 2-3 business days.</p>
+                
+                <div class="success-ref">
+                    <div class="label">Reference Number</div>
+                    <div class="code" id="refCode">CBX-000000</div>
+                </div>
+                
+                <a href="index.html" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    Return to Home
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">© 2025-26 CONBEX® Technologies Inc. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <script>
+        let selectedType = '';
+        let generatedRefCode = '';
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            const newTheme = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('conbex-theme', newTheme);
+        }
+        
+        // Load saved theme
+        (function() {
+            const saved = localStorage.getItem('conbex-theme');
+            if (saved) document.documentElement.setAttribute('data-theme', saved);
+        })();
+        
+        function selectType(type) {
+            // Update selection
+            selectedType = type;
+            
+            // Update visual
+            document.querySelectorAll('.type-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelector(`.type-card.${type}`).classList.add('selected');
+            
+            // Update form tag
+            const tagEl = document.getElementById('userTypeTag');
+            tagEl.className = 'user-type-tag ' + type;
+            
+            const typeNames = {
+                suppliers: 'Supplier',
+                publishers: 'Publisher',
+                providers: 'Service Provider'
+            };
+            tagEl.textContent = typeNames[type];
+            
+            // Show/hide indigenous question for suppliers
+            const indigenousQ = document.getElementById('indigenousQuestion');
+            indigenousQ.style.display = type === 'suppliers' ? 'block' : 'none';
+            
+            // Go to next step after brief delay
+            setTimeout(() => goToStep(2), 300);
+        }
+        
+        function toggleOtherField(selectId, otherId) {
+            const select = document.getElementById(selectId);
+            const otherGroup = document.getElementById(otherId + 'Group');
+            const otherInput = document.getElementById(otherId);
+            
+            if (select.value === 'Other') {
+                otherGroup.style.display = 'block';
+                otherInput.required = true;
+            } else {
+                otherGroup.style.display = 'none';
+                otherInput.required = false;
+                otherInput.value = '';
+            }
+        }
+        
+        function goToStep(step) {
+            // Update sections
+            document.querySelectorAll('.step-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + step).classList.add('active');
+            
+            // Update dots
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById('step' + i + '-dot');
+                dot.classList.remove('active', 'completed');
+                if (i < step) dot.classList.add('completed');
+                if (i === step) dot.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function generateRefCode() {
+            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            let code = 'CBX-';
+            for (let i = 0; i < 6; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+        
+        function prepareSubmit(event) {
+            // Generate reference code
+            generatedRefCode = generateRefCode();
+            
+            // Get user type name
+            const typeNames = {
+                suppliers: 'Supplier',
+                publishers: 'Publisher',
+                providers: 'Service Provider'
+            };
+            
+            // Set hidden fields
+            document.getElementById('hiddenUserType').value = typeNames[selectedType] || selectedType;
+            document.getElementById('hiddenRefCode').value = generatedRefCode;
+            document.getElementById('hiddenTimestamp').value = new Date().toLocaleString('en-CA', { 
+                timeZone: 'America/Toronto',
+                dateStyle: 'full',
+                timeStyle: 'long'
+            });
+            
+            // Set success URL (will show success page after form submission)
+            // For now, we'll handle it with localStorage and redirect
+            document.getElementById('successUrl').value = window.location.href.replace('beta.html', 'beta.html?success=' + generatedRefCode);
+            
+            // Store application locally as backup
+            const formData = {
+                type: selectedType,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                organization: document.getElementById('organization').value,
+                jobTitle: document.getElementById('jobTitle').value,
+                companySize: document.getElementById('companySize').value,
+                sector: document.getElementById('sector').value,
+                sectorOther: document.getElementById('sectorOther').value,
+                businessType: document.getElementById('businessType').value,
+                businessTypeOther: document.getElementById('businessTypeOther').value,
+                province: document.getElementById('province').value,
+                city: document.getElementById('city').value,
+                indigenousStatus: document.getElementById('indigenousStatus')?.value || '',
+                primaryInterest: document.getElementById('primaryInterest').value,
+                comments: document.getElementById('comments').value,
+                newsletter: document.getElementById('newsletter').checked,
+                refCode: generatedRefCode,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Store locally
+            const applications = JSON.parse(localStorage.getItem('conbex-beta-applications') || '[]');
+            applications.push(formData);
+            localStorage.setItem('conbex-beta-applications', JSON.stringify(applications));
+            
+            console.log('Beta Application Submitted:', formData);
+            
+            // Allow form to submit to FormSubmit.co
+            return true;
+        }
+        
+        // Check for success parameter on page load
+        (function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const successCode = urlParams.get('success');
+            
+            if (successCode) {
+                // Show success screen
+                document.getElementById('refCode').textContent = successCode;
+                goToStep(3);
+                
+                // Clean URL
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        })();
+    </script>
+</body>
+</html>
