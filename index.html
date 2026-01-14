@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CONBEX® | Canada's Opportunities Nexus & Businesses Exchange - Coming Soon</title>
-    <meta name="description" content="CONBEX - Canada's Opportunities Nexus & Businesses Exchange. Launching Soon.">
+    <meta name="description" content="CONBEX - Canada's Opportunities Nexus & Businesses Exchange. Discover. Analyze. Win. Manage.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='45' fill='%231E3A5F'/%3E%3Ccircle cx='50' cy='50' r='18' fill='%2338BDF8'/%3E%3C/svg%3E">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -18,6 +19,9 @@
             --sky-light: #7DD3FC;
             --gold: #F59E0B;
             --red: #EF4444;
+            --emerald: #10B981;
+            --violet: #8B5CF6;
+            --cyan: #06B6D4;
             --slate: #64748B;
             --slate-light: #94A3B8;
         }
@@ -28,10 +32,9 @@
             --text-primary: #FFFFFF;
             --text-secondary: #94A3B8;
             --text-muted: #64748B;
-            --hero-ring: rgba(255,255,255,0.9);
+            --hero-ring: rgba(255,255,255,0.95);
             --card-bg: rgba(255,255,255,0.03);
             --border: rgba(255,255,255,0.08);
-            --light-word: rgba(255,255,255,0.4);
         }
         
         [data-theme="light"] {
@@ -43,7 +46,6 @@
             --hero-ring: #1E3A5F;
             --card-bg: rgba(255,255,255,0.8);
             --border: rgba(30,58,95,0.1);
-            --light-word: rgba(30,58,95,0.35);
         }
         
         body {
@@ -56,7 +58,7 @@
             position: relative;
         }
         
-        /* ==================== DATA ANALYTICS AI BACKGROUND ==================== */
+        /* ==================== AI BACKGROUND ==================== */
         .ai-background {
             position: fixed;
             top: 0;
@@ -68,7 +70,6 @@
             overflow: hidden;
         }
         
-        /* Subtle Gradient Base */
         .gradient-base {
             position: absolute;
             top: 0;
@@ -91,7 +92,6 @@
                 linear-gradient(180deg, #F8FAFC 0%, #F0F4F8 50%, #F8FAFC 100%);
         }
         
-        /* Data Grid Pattern */
         .data-grid {
             position: absolute;
             top: 0;
@@ -108,222 +108,6 @@
         [data-theme="dark"] { --grid-line: rgba(56, 189, 248, 0.04); }
         [data-theme="light"] { --grid-line: rgba(2, 132, 199, 0.05); }
         
-        /* Floating Data Points */
-        .data-points {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        
-        .data-point {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            opacity: 0;
-            animation: data-pulse 4s ease-in-out infinite;
-        }
-        
-        [data-theme="dark"] .data-point { 
-            background: var(--sky); 
-            box-shadow: 0 0 8px var(--sky);
-        }
-        [data-theme="light"] .data-point { 
-            background: var(--ocean); 
-            box-shadow: 0 0 8px var(--ocean);
-        }
-        
-        .data-point:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; }
-        .data-point:nth-child(2) { top: 20%; right: 12%; animation-delay: 0.5s; }
-        .data-point:nth-child(3) { top: 35%; left: 5%; animation-delay: 1s; }
-        .data-point:nth-child(4) { top: 50%; right: 8%; animation-delay: 1.5s; }
-        .data-point:nth-child(5) { top: 65%; left: 10%; animation-delay: 2s; }
-        .data-point:nth-child(6) { top: 75%; right: 6%; animation-delay: 2.5s; }
-        .data-point:nth-child(7) { top: 85%; left: 7%; animation-delay: 3s; }
-        .data-point:nth-child(8) { top: 45%; left: 3%; animation-delay: 3.5s; }
-        
-        @keyframes data-pulse {
-            0%, 100% { opacity: 0; transform: scale(0.5); }
-            50% { opacity: 0.6; transform: scale(1); }
-        }
-        
-        /* Analytics Bar Chart - Left Side */
-        .analytics-bars {
-            position: absolute;
-            bottom: 15%;
-            left: 3%;
-            display: flex;
-            align-items: flex-end;
-            gap: 6px;
-            opacity: 0.08;
-        }
-        
-        .bar {
-            width: 8px;
-            border-radius: 2px 2px 0 0;
-            animation: bar-grow 3s ease-in-out infinite;
-        }
-        
-        [data-theme="dark"] .bar { background: var(--sky); }
-        [data-theme="light"] .bar { background: var(--ocean); }
-        
-        .bar:nth-child(1) { height: 30px; animation-delay: 0s; }
-        .bar:nth-child(2) { height: 50px; animation-delay: 0.2s; }
-        .bar:nth-child(3) { height: 35px; animation-delay: 0.4s; }
-        .bar:nth-child(4) { height: 60px; animation-delay: 0.6s; }
-        .bar:nth-child(5) { height: 45px; animation-delay: 0.8s; }
-        .bar:nth-child(6) { height: 70px; animation-delay: 1s; }
-        
-        @keyframes bar-grow {
-            0%, 100% { transform: scaleY(1); opacity: 0.08; }
-            50% { transform: scaleY(1.2); opacity: 0.15; }
-        }
-        
-        /* Analytics Line Chart - Right Side */
-        .analytics-line {
-            position: absolute;
-            top: 20%;
-            right: 3%;
-            width: 120px;
-            height: 60px;
-            opacity: 0.1;
-        }
-        
-        .analytics-line svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .chart-line {
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-dasharray: 200;
-            stroke-dashoffset: 200;
-            animation: draw-line 4s ease-in-out infinite;
-        }
-        
-        [data-theme="dark"] .chart-line { stroke: var(--sky); }
-        [data-theme="light"] .chart-line { stroke: var(--ocean); }
-        
-        @keyframes draw-line {
-            0%, 100% { stroke-dashoffset: 200; }
-            50% { stroke-dashoffset: 0; }
-        }
-        
-        /* AI Neural Nodes */
-        .neural-cluster {
-            position: absolute;
-            top: 60%;
-            right: 5%;
-            width: 100px;
-            height: 100px;
-            opacity: 0.08;
-        }
-        
-        .neural-cluster svg {
-            width: 100%;
-            height: 100%;
-        }
-        
-        .neural-node-circle {
-            animation: node-glow 3s ease-in-out infinite;
-        }
-        
-        [data-theme="dark"] .neural-node-circle { fill: var(--sky); }
-        [data-theme="light"] .neural-node-circle { fill: var(--ocean); }
-        
-        .neural-node-circle:nth-child(2) { animation-delay: 0.5s; }
-        .neural-node-circle:nth-child(3) { animation-delay: 1s; }
-        .neural-node-circle:nth-child(4) { animation-delay: 1.5s; }
-        
-        .neural-connection {
-            stroke-width: 1;
-            opacity: 0.5;
-        }
-        
-        [data-theme="dark"] .neural-connection { stroke: var(--sky); }
-        [data-theme="light"] .neural-connection { stroke: var(--ocean); }
-        
-        @keyframes node-glow {
-            0%, 100% { opacity: 0.3; r: 4; }
-            50% { opacity: 0.8; r: 6; }
-        }
-        
-        /* Pie Chart - Left Side */
-        .pie-chart {
-            position: absolute;
-            top: 15%;
-            left: 4%;
-            width: 60px;
-            height: 60px;
-            opacity: 0.08;
-        }
-        
-        .pie-chart svg {
-            width: 100%;
-            height: 100%;
-            transform: rotate(-90deg);
-        }
-        
-        .pie-segment {
-            fill: none;
-            stroke-width: 8;
-            stroke-dasharray: 0 100;
-            animation: pie-fill 4s ease-in-out infinite;
-        }
-        
-        [data-theme="dark"] .pie-segment { stroke: var(--sky); }
-        [data-theme="light"] .pie-segment { stroke: var(--ocean); }
-        
-        .pie-segment:nth-child(2) { 
-            animation-delay: 1s;
-            opacity: 0.6;
-        }
-        
-        @keyframes pie-fill {
-            0%, 100% { stroke-dasharray: 0 100; }
-            50% { stroke-dasharray: 70 30; }
-        }
-        
-        /* Binary Data Stream */
-        .binary-stream {
-            position: absolute;
-            font-family: 'Courier New', monospace;
-            font-size: 10px;
-            opacity: 0;
-            animation: binary-fade 6s linear infinite;
-            white-space: nowrap;
-        }
-        
-        [data-theme="dark"] .binary-stream { color: rgba(56, 189, 248, 0.15); }
-        [data-theme="light"] .binary-stream { color: rgba(2, 132, 199, 0.12); }
-        
-        .binary-stream:nth-child(1) { top: 25%; left: 2%; animation-delay: 0s; }
-        .binary-stream:nth-child(2) { top: 55%; right: 2%; animation-delay: 2s; }
-        .binary-stream:nth-child(3) { top: 80%; left: 2%; animation-delay: 4s; }
-        
-        @keyframes binary-fade {
-            0%, 100% { opacity: 0; }
-            30%, 70% { opacity: 1; }
-        }
-        
-        /* Soft Light Spots */
-        .light-spot {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-        }
-        
-        [data-theme="dark"] .light-spot { background: rgba(56, 189, 248, 0.06); }
-        [data-theme="light"] .light-spot { background: rgba(2, 132, 199, 0.05); }
-        
-        .light-spot:nth-child(1) { width: 350px; height: 350px; top: -10%; right: 5%; }
-        .light-spot:nth-child(2) { width: 300px; height: 300px; bottom: 5%; left: -5%; }
-        
-        /* Subtle Vignette */
         .vignette {
             position: absolute;
             top: 0;
@@ -341,26 +125,22 @@
             background: radial-gradient(ellipse at center, transparent 50%, rgba(240, 244, 248, 0.3) 100%);
         }
         
-        /* Hide some elements on mobile */
-        @media (max-width: 768px) {
-            .analytics-bars { display: none; }
-            .analytics-line { display: none; }
-            .neural-cluster { display: none; }
-            .pie-chart { display: none; }
-            .binary-stream { display: none; }
+        /* Maple Leaf Watermark */
+        .maple-watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 700px;
+            height: 700px;
+            pointer-events: none;
+            z-index: 0;
         }
         
-        /* Ensure content is above background */
-        .hero-section, .section-spacer, .main-content, footer, .theme-toggle {
-            position: relative;
-            z-index: 1;
-        }
-        .hero-section, .section-spacer, .main-content, footer, .theme-toggle {
-            position: relative;
-            z-index: 1;
-        }
+        [data-theme="dark"] .maple-watermark { opacity: 0.012; color: white; }
+        [data-theme="light"] .maple-watermark { opacity: 0.025; color: var(--navy); }
         
-        /* Top Controls - Theme & Language */
+        /* Top Controls */
         .top-controls {
             position: fixed;
             top: 20px;
@@ -371,7 +151,6 @@
             gap: 10px;
         }
         
-        /* Language Toggle */
         .lang-toggle {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -405,7 +184,6 @@
             background: var(--border);
         }
         
-        /* Theme Toggle */
         .theme-toggle {
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -423,7 +201,30 @@
         [data-theme="light"] .theme-toggle .sun { display: block; }
         [data-theme="light"] .theme-toggle .moon { display: none; }
         
-        /* ==================== HERO O SECTION ==================== */
+        /* Region Labels */
+        .region-labels {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+        
+        .region-label {
+            position: absolute;
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.25;
+        }
+        
+        [data-theme="dark"] .region-label { color: rgba(255,255,255,0.5); }
+        [data-theme="light"] .region-label { color: rgba(0,0,0,0.3); }
+        
+        /* ==================== HERO SECTION ==================== */
         .hero-section {
             min-height: auto;
             display: flex;
@@ -433,399 +234,176 @@
             padding: 60px 20px 30px;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         
-        /* THE BIG O - Dominating Hero Element */
+        /* Canvas for particle animation */
+        #flow-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* THE BIG O - DOMINANT */
         .hero-o-container {
             position: relative;
-            width: 624px;
-            height: 624px;
-            margin-bottom: 28px;
+            width: 70vmin;
+            height: 70vmin;
+            min-width: 380px;
+            min-height: 380px;
+            max-width: 650px;
+            max-height: 650px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            z-index: 2;
         }
         
-        .hero-o {
+        .hero-o-container:hover {
+            transform: scale(1.02);
+        }
+        
+        .hero-svg {
             width: 100%;
             height: 100%;
             overflow: visible;
         }
         
-        /* Main O ring - SOLID and thick like letters */
-        .hero-main-ring {
+        /* Main O Ring - Enhanced for both themes */
+        .main-ring {
             fill: none;
-            stroke: var(--hero-ring);
-            stroke-width: 12;
-            filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.3));
+            stroke-width: 10;
+            transition: filter 0.3s ease;
         }
         
-        /* Radar expanding rings - Very dense dots */
-        .radar-ring {
-            fill: none;
-            stroke-width: 2.5;
-            stroke-dasharray: 1.5 2;
-            stroke-linecap: round;
-            opacity: 0;
-            transform-origin: center;
-            animation: radar-expand 3s ease-out infinite;
+        [data-theme="dark"] .main-ring { 
+            stroke: rgba(255,255,255,0.95);
+            filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.5));
         }
         
-        .radar-ring:nth-child(1) { animation-delay: 0s; stroke: var(--hero-ring); }
-        .radar-ring:nth-child(2) { animation-delay: 0.5s; stroke: var(--ocean); }
-        .radar-ring:nth-child(3) { animation-delay: 1s; stroke: var(--sky); }
-        .radar-ring:nth-child(4) { animation-delay: 1.5s; stroke: var(--gold); }
-        .radar-ring:nth-child(5) { animation-delay: 2s; stroke: var(--red); }
-        .radar-ring:nth-child(6) { animation-delay: 2.5s; stroke: var(--slate); }
-        
-        @keyframes radar-expand {
-            0% { r: 25; opacity: 0.8; stroke-width: 4; }
-            50% { opacity: 0.5; }
-            80% { r: 160; opacity: 0.15; stroke-width: 2; }
-            100% { r: 180; opacity: 0; stroke-width: 1; }
-        }
-        
-        /* ===== DOT TRAILS - All dots have trails ===== */
-        .dot-trail {
-            fill: none;
-            stroke-width: 2;
-            opacity: 0;
-            stroke-linecap: round;
-        }
-        
-        /* Trail animations for all directions - All CONBEX colors */
-        .dot-trail.t-top { animation: trail-v 2.8s ease-in-out infinite; stroke: url(#trailGradSky); }
-        .dot-trail.t-right { animation: trail-h 2.8s ease-in-out infinite 0.35s; stroke: url(#trailGradGold); }
-        .dot-trail.t-bottom { animation: trail-v 2.8s ease-in-out infinite 0.7s; stroke: url(#trailGradOcean); }
-        .dot-trail.t-left { animation: trail-h 2.8s ease-in-out infinite 1.05s; stroke: url(#trailGradRed); }
-        .dot-trail.t-tr { animation: trail-d 2.8s ease-in-out infinite 0.2s; stroke: url(#trailGradSkyLight); }
-        .dot-trail.t-br { animation: trail-d 2.8s ease-in-out infinite 0.55s; stroke: url(#trailGradNavy); }
-        .dot-trail.t-bl { animation: trail-d 2.8s ease-in-out infinite 0.9s; stroke: url(#trailGradSlate); }
-        .dot-trail.t-tl { animation: trail-d 2.8s ease-in-out infinite 1.25s; stroke: url(#trailGradRed); }
-        
-        /* Additional trails - Color variety */
-        .dot-trail.t-top2 { animation: trail-v 2.8s ease-in-out infinite 1.4s; stroke: url(#trailGradNavy); }
-        .dot-trail.t-right2 { animation: trail-h 2.8s ease-in-out infinite 1.6s; stroke: url(#trailGradSkyLight); }
-        .dot-trail.t-bottom2 { animation: trail-v 2.8s ease-in-out infinite 1.8s; stroke: url(#trailGradGold); }
-        .dot-trail.t-left2 { animation: trail-h 2.8s ease-in-out infinite 2s; stroke: url(#trailGradSlate); }
-        .dot-trail.t-tr2 { animation: trail-d 2.8s ease-in-out infinite 2.2s; stroke: url(#trailGradOcean); }
-        .dot-trail.t-bl2 { animation: trail-d 2.8s ease-in-out infinite 2.4s; stroke: url(#trailGradSky); }
-        .dot-trail.t-tl2 { animation: trail-d 2.8s ease-in-out infinite 0.5s; stroke: url(#trailGradGold); }
-        .dot-trail.t-br2 { animation: trail-d 2.8s ease-in-out infinite 1.7s; stroke: url(#trailGradRed); }
-        
-        @keyframes trail-v {
-            0% { opacity: 0; stroke-dashoffset: 220; }
-            15% { opacity: 0.5; }
-            50% { opacity: 0.7; }
-            85% { opacity: 0.3; }
-            100% { opacity: 0; stroke-dashoffset: 0; }
-        }
-        @keyframes trail-h {
-            0% { opacity: 0; stroke-dashoffset: 220; }
-            15% { opacity: 0.45; }
-            50% { opacity: 0.65; }
-            85% { opacity: 0.25; }
-            100% { opacity: 0; stroke-dashoffset: 0; }
-        }
-        @keyframes trail-d {
-            0% { opacity: 0; stroke-dashoffset: 280; }
-            15% { opacity: 0.4; }
-            50% { opacity: 0.6; }
-            85% { opacity: 0.2; }
-            100% { opacity: 0; stroke-dashoffset: 0; }
-        }
-        
-        /* ===== INWARD DOTS - All CONBEX colors with reduced glow ===== */
-        .dot-in { opacity: 0; }
-        
-        /* Large dots - All colors */
-        .dot-in.d1 { animation: dot-in-top 2.8s ease-in-out infinite 0s; fill: var(--sky); filter: drop-shadow(0 0 4px var(--sky)); }
-        .dot-in.d2 { animation: dot-in-right 2.8s ease-in-out infinite 0.35s; fill: var(--gold); filter: drop-shadow(0 0 4px var(--gold)); }
-        .dot-in.d3 { animation: dot-in-bottom 2.8s ease-in-out infinite 0.7s; fill: var(--ocean); filter: drop-shadow(0 0 4px var(--ocean)); }
-        .dot-in.d4 { animation: dot-in-left 2.8s ease-in-out infinite 1.05s; fill: var(--red); filter: drop-shadow(0 0 4px var(--red)); }
-        
-        /* Medium dots - Include Navy & Slate */
-        .dot-in.d5 { animation: dot-in-tr 2.8s ease-in-out infinite 0.2s; fill: var(--sky-light); filter: drop-shadow(0 0 3px var(--sky-light)); }
-        .dot-in.d6 { animation: dot-in-br 2.8s ease-in-out infinite 0.55s; fill: var(--navy); filter: drop-shadow(0 0 3px var(--sky)); }
-        .dot-in.d7 { animation: dot-in-bl 2.8s ease-in-out infinite 0.9s; fill: var(--slate); filter: drop-shadow(0 0 3px var(--slate)); }
-        .dot-in.d8 { animation: dot-in-tl 2.8s ease-in-out infinite 1.25s; fill: var(--red); filter: drop-shadow(0 0 3px var(--red)); }
-        
-        /* Small dots - All colors rotation */
-        .dot-in.d9 { animation: dot-in-top 2.8s ease-in-out infinite 1.4s; fill: var(--navy); filter: drop-shadow(0 0 3px var(--sky)); }
-        .dot-in.d10 { animation: dot-in-right 2.8s ease-in-out infinite 1.6s; fill: var(--sky-light); filter: drop-shadow(0 0 3px var(--sky-light)); }
-        .dot-in.d11 { animation: dot-in-bottom 2.8s ease-in-out infinite 1.8s; fill: var(--gold); filter: drop-shadow(0 0 3px var(--gold)); }
-        .dot-in.d12 { animation: dot-in-left 2.8s ease-in-out infinite 2s; fill: var(--slate); filter: drop-shadow(0 0 3px var(--slate)); }
-        
-        /* Extra small dots - Complete color coverage */
-        .dot-in.d13 { animation: dot-in-tr 2.8s ease-in-out infinite 2.2s; fill: var(--ocean); filter: drop-shadow(0 0 2px var(--ocean)); }
-        .dot-in.d14 { animation: dot-in-bl 2.8s ease-in-out infinite 2.4s; fill: var(--sky); filter: drop-shadow(0 0 2px var(--sky)); }
-        .dot-in.d15 { animation: dot-in-tl 2.8s ease-in-out infinite 0.5s; fill: var(--gold); filter: drop-shadow(0 0 2px var(--gold)); }
-        .dot-in.d16 { animation: dot-in-br 2.8s ease-in-out infinite 1.7s; fill: var(--red); filter: drop-shadow(0 0 2px var(--red)); }
-        
-        /* Inward animations */
-        @keyframes dot-in-top {
-            0% { cy: -50; opacity: 0; r: 5; }
-            15% { opacity: 0.7; r: 7; }
-            50% { opacity: 1; r: 10; }
-            85% { opacity: 0.8; r: 8; }
-            100% { cy: 200; opacity: 0; r: 5; }
-        }
-        @keyframes dot-in-right {
-            0% { cx: 450; opacity: 0; r: 4; }
-            15% { opacity: 0.7; r: 6; }
-            50% { opacity: 1; r: 9; }
-            85% { opacity: 0.8; r: 7; }
-            100% { cx: 200; opacity: 0; r: 4; }
-        }
-        @keyframes dot-in-bottom {
-            0% { cy: 450; opacity: 0; r: 5; }
-            15% { opacity: 0.7; r: 7; }
-            50% { opacity: 1; r: 10; }
-            85% { opacity: 0.8; r: 8; }
-            100% { cy: 200; opacity: 0; r: 5; }
-        }
-        @keyframes dot-in-left {
-            0% { cx: -50; opacity: 0; r: 4; }
-            15% { opacity: 0.7; r: 6; }
-            50% { opacity: 1; r: 9; }
-            85% { opacity: 0.8; r: 7; }
-            100% { cx: 200; opacity: 0; r: 4; }
-        }
-        @keyframes dot-in-tr {
-            0% { cx: 430; cy: -30; opacity: 0; r: 3; }
-            15% { opacity: 0.6; r: 5; }
-            50% { opacity: 1; r: 7; }
-            85% { opacity: 0.7; r: 5; }
-            100% { cx: 200; cy: 200; opacity: 0; r: 3; }
-        }
-        @keyframes dot-in-br {
-            0% { cx: 430; cy: 430; opacity: 0; r: 3; }
-            15% { opacity: 0.6; r: 5; }
-            50% { opacity: 1; r: 7; }
-            85% { opacity: 0.7; r: 5; }
-            100% { cx: 200; cy: 200; opacity: 0; r: 3; }
-        }
-        @keyframes dot-in-bl {
-            0% { cx: -30; cy: 430; opacity: 0; r: 3; }
-            15% { opacity: 0.6; r: 5; }
-            50% { opacity: 1; r: 7; }
-            85% { opacity: 0.7; r: 5; }
-            100% { cx: 200; cy: 200; opacity: 0; r: 3; }
-        }
-        @keyframes dot-in-tl {
-            0% { cx: -30; cy: -30; opacity: 0; r: 3; }
-            15% { opacity: 0.6; r: 5; }
-            50% { opacity: 1; r: 7; }
-            85% { opacity: 0.7; r: 5; }
-            100% { cx: 200; cy: 200; opacity: 0; r: 3; }
-        }
-        
-        /* ===== OUTWARD DOTS - All CONBEX colors, reduced glow ===== */
-        .dot-out { opacity: 0; }
-        
-        .dot-out.o1 { animation: dot-out-top 3.5s ease-in-out infinite 0.3s; fill: var(--sky); filter: drop-shadow(0 0 2px var(--sky)); }
-        .dot-out.o2 { animation: dot-out-right 3.5s ease-in-out infinite 0.9s; fill: var(--navy); filter: drop-shadow(0 0 2px var(--sky)); }
-        .dot-out.o3 { animation: dot-out-bottom 3.5s ease-in-out infinite 1.5s; fill: var(--gold); filter: drop-shadow(0 0 2px var(--gold)); }
-        .dot-out.o4 { animation: dot-out-left 3.5s ease-in-out infinite 2.1s; fill: var(--slate); filter: drop-shadow(0 0 2px var(--slate)); }
-        .dot-out.o5 { animation: dot-out-tr 3.5s ease-in-out infinite 2.7s; fill: var(--red); filter: drop-shadow(0 0 2px var(--red)); }
-        .dot-out.o6 { animation: dot-out-bl 3.5s ease-in-out infinite 3.2s; fill: var(--ocean); filter: drop-shadow(0 0 2px var(--ocean)); }
-        
-        @keyframes dot-out-top {
-            0% { cy: 200; opacity: 0; r: 4; }
-            20% { opacity: 0.2; r: 5; }
-            70% { opacity: 0.12; r: 4; }
-            100% { cy: -80; opacity: 0; r: 3; }
-        }
-        @keyframes dot-out-right {
-            0% { cx: 200; opacity: 0; r: 4; }
-            20% { opacity: 0.18; r: 5; }
-            70% { opacity: 0.1; r: 4; }
-            100% { cx: 480; opacity: 0; r: 3; }
-        }
-        @keyframes dot-out-bottom {
-            0% { cy: 200; opacity: 0; r: 4; }
-            20% { opacity: 0.2; r: 5; }
-            70% { opacity: 0.12; r: 4; }
-            100% { cy: 480; opacity: 0; r: 3; }
-        }
-        @keyframes dot-out-left {
-            0% { cx: 200; opacity: 0; r: 4; }
-            20% { opacity: 0.18; r: 5; }
-            70% { opacity: 0.1; r: 4; }
-            100% { cx: -80; opacity: 0; r: 3; }
-        }
-        @keyframes dot-out-tr {
-            0% { cx: 200; cy: 200; opacity: 0; r: 3; }
-            20% { opacity: 0.15; r: 4; }
-            70% { opacity: 0.08; r: 3; }
-            100% { cx: 460; cy: -60; opacity: 0; r: 2; }
-        }
-        @keyframes dot-out-bl {
-            0% { cx: 200; cy: 200; opacity: 0; r: 3; }
-            20% { opacity: 0.15; r: 4; }
-            70% { opacity: 0.08; r: 3; }
-            100% { cx: -60; cy: 460; opacity: 0; r: 2; }
-        }
-        
-        /* Center core */
-        /* Center core - follows O ring color */
-        .hero-core {
-            animation: core-pulse 1.8s ease-in-out infinite;
-        }
-        
-        [data-theme="dark"] .hero-core {
-            fill: rgba(255, 255, 255, 0.9);
-            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
-        }
-        
-        [data-theme="light"] .hero-core {
-            fill: var(--navy);
-            filter: drop-shadow(0 0 10px rgba(30, 58, 95, 0.3));
-        }
-        
-        @keyframes core-pulse {
-            0%, 100% { r: 24; }
-            50% { r: 30; }
-        }
-        
-        /* Inner glow ring - follows theme */
-        .hero-inner-glow {
-            fill: none;
-            stroke-width: 2;
-            stroke-dasharray: 1 1.5;
-            stroke-linecap: round;
-            opacity: 0.4;
-            animation: inner-glow 2s ease-in-out infinite;
-        }
-        
-        [data-theme="dark"] .hero-inner-glow {
-            stroke: rgba(255, 255, 255, 0.6);
-            filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
-        }
-        
-        [data-theme="light"] .hero-inner-glow {
+        [data-theme="light"] .main-ring { 
             stroke: var(--navy);
-            filter: drop-shadow(0 0 3px rgba(30, 58, 95, 0.2));
+            filter: drop-shadow(0 0 8px rgba(30, 58, 95, 0.3));
         }
         
-        @keyframes inner-glow {
-            0%, 100% { opacity: 0.3; r: 45; }
-            50% { opacity: 0.6; r: 52; }
+        .hero-o-container:hover .main-ring {
+            filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.8));
         }
         
-        /* ===== TAGLINE ROW - Centered Under Wordmark ===== */
-        .tagline-row {
-            margin-top: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
+        [data-theme="light"] .hero-o-container:hover .main-ring {
+            filter: drop-shadow(0 0 15px rgba(30, 58, 95, 0.5));
         }
         
-        .tagline-text {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            gap: 0;
-            font-style: italic;
+        /* Outer glow ring */
+        .outer-ring-glow {
+            fill: none;
+            stroke-width: 20;
         }
         
-        .tag-word {
-            transition: all 0.3s;
-        }
-        
-        [data-theme="dark"] .tag-word { 
-            color: #FFFFFF;
-        }
-        [data-theme="light"] .tag-word { 
-            color: var(--navy);
-        }
-        
-        .tag-dot {
-            font-weight: 700;
-        }
-        
-        [data-theme="dark"] .tag-dot { 
-            color: var(--sky);
-        }
-        [data-theme="light"] .tag-dot { 
-            color: var(--ocean);
-        }
-        
-        .tagline-text .tm {
-            font-size: 6px;
-            font-weight: 500;
-            vertical-align: super;
-            margin-left: 1px;
+        [data-theme="dark"] .outer-ring-glow {
+            stroke: rgba(56, 189, 248, 0.08);
             opacity: 0.5;
         }
         
-        /* Powered Row - Badge + Dynamic Star */
-        .powered-row {
+        [data-theme="light"] .outer-ring-glow {
+            stroke: rgba(30, 58, 95, 0.06);
+            opacity: 1;
+        }
+        
+        /* Inner ring highlight */
+        .inner-ring-highlight {
+            fill: none;
+            stroke-width: 2;
+            opacity: 0.3;
+        }
+        
+        [data-theme="dark"] .inner-ring-highlight { stroke: rgba(255, 255, 255, 0.5); }
+        [data-theme="light"] .inner-ring-highlight { stroke: rgba(30, 58, 95, 0.3); }
+        
+        .scan-ring {
+            fill: none;
+            stroke-width: 2;
+            opacity: 0;
+        }
+        
+        .core {
+            transition: filter 0.3s ease;
+        }
+        
+        [data-theme="dark"] .core { 
+            fill: white;
+            filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.9));
+        }
+        
+        [data-theme="light"] .core { 
+            fill: var(--navy);
+            filter: drop-shadow(0 0 15px rgba(30, 58, 95, 0.4));
+        }
+        
+        .hero-o-container:hover .core {
+            filter: drop-shadow(0 0 40px rgba(56, 189, 248, 1));
+        }
+        
+        [data-theme="light"] .hero-o-container:hover .core {
+            filter: drop-shadow(0 0 25px rgba(30, 58, 95, 0.6));
+        }
+        
+        .inner-glow {
+            fill: none;
+            stroke-width: 40;
+            transition: opacity 0.3s ease;
+        }
+        
+        [data-theme="dark"] .inner-glow { 
+            stroke: var(--sky);
+            opacity: 0.05;
+        }
+        
+        [data-theme="light"] .inner-glow { 
+            stroke: var(--navy);
+            opacity: 0.03;
+        }
+        
+        .hero-o-container:hover .inner-glow {
+            opacity: 0.1;
+        }
+        
+        [data-theme="light"] .hero-o-container:hover .inner-glow {
+            opacity: 0.06;
+        }
+        
+        /* Stats Counter */
+        .stats-counter {
             display: flex;
-            align-items: center;
-            gap: 4px;
+            gap: 30px;
+            margin-bottom: 20px;
+            z-index: 2;
         }
         
-        /* Powered by AI Badge */
-        .powered-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 2px 6px;
-            border-radius: 8px;
-            font-size: 7px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        [data-theme="dark"] .stat-value { color: var(--sky); }
+        [data-theme="light"] .stat-value { color: var(--ocean); }
+        
+        .stat-label {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 1px;
             text-transform: uppercase;
-        }
-        
-        [data-theme="dark"] .powered-badge {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(2, 132, 199, 0.08));
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            color: var(--sky);
-        }
-        
-        [data-theme="light"] .powered-badge {
-            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(56, 189, 248, 0.05));
-            border: 1px solid rgba(2, 132, 199, 0.15);
-            color: var(--ocean);
-        }
-        
-        /* Dynamic AI Star - 8 Point Burst */
-        .ai-star-dynamic {
-            width: 14px;
-            height: 14px;
-        }
-        
-        [data-theme="dark"] .ai-star-dynamic { color: var(--sky); }
-        [data-theme="light"] .ai-star-dynamic { color: var(--ocean); }
-        
-        /* Rotating Rays Animation */
-        .ai-star-dynamic .star-rays {
-            transform-origin: center;
-            animation: star-rotate 8s linear infinite;
-        }
-        
-        @keyframes star-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Pulsing Core Animation */
-        .ai-star-dynamic .star-core {
-            animation: core-pulse 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes core-pulse {
-            0%, 100% { 
-                r: 4;
-                opacity: 0.7;
-            }
-            50% { 
-                r: 5.5;
-                opacity: 1;
-            }
+            margin-top: 4px;
+            color: var(--text-muted);
         }
         
         /* Launch Progress Widget */
@@ -835,6 +413,7 @@
             align-items: center;
             gap: 14px;
             margin-bottom: 8px;
+            z-index: 2;
         }
         
         .launch-status {
@@ -870,7 +449,6 @@
             animation: progress-grow 4s ease-in-out infinite;
         }
         
-        /* Growing animation - oscillates to show activity */
         @keyframes progress-grow {
             0% { width: 68%; }
             25% { width: 71%; }
@@ -879,7 +457,6 @@
             100% { width: 68%; }
         }
         
-        /* Shimmer wave traveling across the bar */
         .progress-fill::before {
             content: '';
             position: absolute;
@@ -887,12 +464,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                90deg, 
-                transparent 0%, 
-                rgba(255,255,255,0.5) 50%, 
-                transparent 100%
-            );
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
             animation: progress-wave 2s linear infinite;
         }
         
@@ -901,7 +473,6 @@
             100% { left: 100%; }
         }
         
-        /* Glowing pulse at the leading edge - positioned on progress-bar */
         .progress-bar::after {
             content: '';
             position: absolute;
@@ -918,14 +489,8 @@
         }
         
         @keyframes edge-pulse {
-            0%, 100% { 
-                transform: translateY(-50%) scale(0.7);
-                opacity: 0.6;
-            }
-            50% { 
-                transform: translateY(-50%) scale(1);
-                opacity: 1;
-            }
+            0%, 100% { transform: translateY(-50%) scale(0.7); opacity: 0.6; }
+            50% { transform: translateY(-50%) scale(1); opacity: 1; }
         }
         
         @keyframes edge-move {
@@ -952,7 +517,7 @@
             letter-spacing: 1.5px;
         }
         
-        /* Newsletter Inline - Inside Launch Widget */
+        /* Newsletter Inline */
         .newsletter-inline {
             display: flex;
             align-items: center;
@@ -1024,14 +589,282 @@
             box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
         }
         
-        /* Spacer between hero and main */
-        .section-spacer {
-            height: auto;
-            min-height: 140px;
+        /* ==================== PORTAL HUB SECTION ==================== */
+        .portal-hub-section {
+            padding: 60px 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .portal-hub {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Main Beta Portal */
+        .main-portal {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .portal-card {
+            background: var(--card-bg);
+            border: 2px solid var(--border);
+            border-radius: 20px;
+            padding: 30px 40px;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .portal-card.main {
+            border-color: var(--sky);
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(2, 132, 199, 0.05));
+        }
+        
+        [data-theme="light"] .portal-card.main {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(56, 189, 248, 0.05));
+            border-color: var(--ocean);
+        }
+        
+        .portal-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.2);
+        }
+        
+        .portal-card.main:hover {
+            border-color: var(--sky);
+            box-shadow: 0 12px 40px rgba(56, 189, 248, 0.3);
+        }
+        
+        .portal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            margin: 0 auto 16px;
+        }
+        
+        .portal-card.main .portal-icon {
+            background: linear-gradient(135deg, var(--ocean), var(--sky));
+            box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+        }
+        
+        .portal-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+        
+        .portal-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        
+        .portal-subtitle {
+            font-size: 12px;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+        }
+        
+        .portal-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--ocean), var(--sky));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+        
+        /* Connection Lines Container */
+        .connections-visual {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--sky), transparent);
+            animation: pulse-line 2s ease-in-out infinite;
+        }
+        
+        .connection-line.left {
+            width: 120px;
+            left: calc(50% - 200px);
+            transform: rotate(30deg);
+            transform-origin: right center;
+        }
+        
+        .connection-line.center {
+            width: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .connection-line.right {
+            width: 120px;
+            right: calc(50% - 200px);
+            transform: rotate(-30deg);
+            transform-origin: left center;
+        }
+        
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Data Flow Dots */
+        .flow-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--sky);
+            box-shadow: 0 0 10px var(--sky);
+        }
+        
+        .flow-dot.d1 { animation: flow-up-left 2s ease-in-out infinite; left: calc(50% - 160px); }
+        .flow-dot.d2 { animation: flow-up-center 2s ease-in-out infinite 0.3s; left: 50%; transform: translateX(-50%); }
+        .flow-dot.d3 { animation: flow-up-right 2s ease-in-out infinite 0.6s; right: calc(50% - 160px); }
+        
+        @keyframes flow-up-left {
+            0% { bottom: 0; opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { bottom: 60px; opacity: 0; transform: translateX(40px); }
+        }
+        
+        @keyframes flow-up-center {
+            0% { bottom: 0; opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { bottom: 60px; opacity: 0; }
+        }
+        
+        @keyframes flow-up-right {
+            0% { bottom: 0; opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { bottom: 60px; opacity: 0; transform: translateX(-40px); }
+        }
+        
+        /* Sub-Portals Grid */
+        .sub-portals {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            width: 100%;
+        }
+        
+        .sub-portal {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .sub-portal::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(180deg, var(--border), transparent);
+        }
+        
+        .sub-portal:hover {
+            transform: translateY(-4px);
+            border-color: var(--border);
+        }
+        
+        .sub-portal.suppliers:hover { border-color: var(--sky); box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15); }
+        .sub-portal.publishers:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(245, 158, 11, 0.15); }
+        .sub-portal.providers:hover { border-color: var(--red); box-shadow: 0 8px 24px rgba(239, 68, 68, 0.15); }
+        
+        .sub-portal-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+        
+        .sub-portal.suppliers .sub-portal-icon { background: rgba(56, 189, 248, 0.12); }
+        .sub-portal.publishers .sub-portal-icon { background: rgba(245, 158, 11, 0.12); }
+        .sub-portal.providers .sub-portal-icon { background: rgba(239, 68, 68, 0.12); }
+        
+        .sub-portal-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .sub-portal.suppliers .sub-portal-icon svg { color: var(--sky); }
+        .sub-portal.publishers .sub-portal-icon svg { color: var(--gold); }
+        .sub-portal.providers .sub-portal-icon svg { color: var(--red); }
+        
+        .sub-portal-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .sub-portal-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+        
+        .sub-portal-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 10px;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+        
+        .sub-portal-status .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+            animation: status-pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes status-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
         
         /* ==================== MAIN CONTENT ==================== */
@@ -1040,6 +873,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
         
         /* Logo Section */
@@ -1059,7 +894,6 @@
             margin-bottom: 12px;
         }
         
-        /* ® as superscript - properly positioned */
         .wordmark .reg {
             font-size: 14px;
             font-weight: 700;
@@ -1074,7 +908,8 @@
         
         /* Animated O in wordmark */
         .logo-o {
-            width: 56px; height: 56px;
+            width: 56px; 
+            height: 56px;
             display: inline-flex;
             margin: 0 -3px;
             vertical-align: middle;
@@ -1095,19 +930,16 @@
         .logo-ring-out:nth-child(2) { animation-delay: 0.5s; }
         .logo-ring-out:nth-child(3) { animation-delay: 1s; }
         .logo-ring-out:nth-child(4) { animation-delay: 1.5s; }
-        .logo-ring-out:nth-child(5) { animation-delay: 2s; }
         
         [data-theme="dark"] .logo-ring-out:nth-child(1) { stroke: white; }
         [data-theme="dark"] .logo-ring-out:nth-child(2) { stroke: var(--sky); }
-        [data-theme="dark"] .logo-ring-out:nth-child(3) { stroke: var(--sky-light); }
+        [data-theme="dark"] .logo-ring-out:nth-child(3) { stroke: var(--gold); }
         [data-theme="dark"] .logo-ring-out:nth-child(4) { stroke: var(--red); }
-        [data-theme="dark"] .logo-ring-out:nth-child(5) { stroke: var(--gold); }
         
         [data-theme="light"] .logo-ring-out:nth-child(1) { stroke: var(--navy); }
         [data-theme="light"] .logo-ring-out:nth-child(2) { stroke: var(--ocean); }
-        [data-theme="light"] .logo-ring-out:nth-child(3) { stroke: var(--sky); }
+        [data-theme="light"] .logo-ring-out:nth-child(3) { stroke: var(--gold); }
         [data-theme="light"] .logo-ring-out:nth-child(4) { stroke: var(--red); }
-        [data-theme="light"] .logo-ring-out:nth-child(5) { stroke: var(--gold); }
         
         @keyframes logo-ring-expand {
             0% { r: 6; opacity: 0.9; stroke-width: 3; }
@@ -1165,6 +997,106 @@
             50% { r: 7; }
         }
         
+        /* Tagline Row */
+        .tagline-row {
+            margin-top: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .tagline-text {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            font-style: italic;
+        }
+        
+        .tag-word {
+            transition: all 0.3s;
+        }
+        
+        [data-theme="dark"] .tag-word { color: #FFFFFF; }
+        [data-theme="light"] .tag-word { color: var(--navy); }
+        
+        .tag-dot {
+            font-weight: 700;
+        }
+        
+        [data-theme="dark"] .tag-dot { color: var(--sky); }
+        [data-theme="light"] .tag-dot { color: var(--ocean); }
+        
+        .tagline-text .tm {
+            font-size: 6px;
+            font-weight: 500;
+            vertical-align: super;
+            margin-left: 1px;
+            opacity: 0.5;
+        }
+        
+        /* Powered Row */
+        .powered-row {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .powered-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 7px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        [data-theme="dark"] .powered-badge {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(2, 132, 199, 0.08));
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            color: var(--sky);
+        }
+        
+        [data-theme="light"] .powered-badge {
+            background: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(56, 189, 248, 0.05));
+            border: 1px solid rgba(2, 132, 199, 0.15);
+            color: var(--ocean);
+        }
+        
+        .ai-star-dynamic {
+            width: 14px;
+            height: 14px;
+        }
+        
+        [data-theme="dark"] .ai-star-dynamic { color: var(--sky); }
+        [data-theme="light"] .ai-star-dynamic { color: var(--ocean); }
+        
+        .ai-star-dynamic .star-rays {
+            transform-origin: center;
+            animation: star-rotate 8s linear infinite;
+        }
+        
+        @keyframes star-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .ai-star-dynamic .star-core {
+            animation: star-core-pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes star-core-pulse {
+            0%, 100% { r: 4; opacity: 0.7; }
+            50% { r: 5.5; opacity: 1; }
+        }
+        
         .descriptor {
             font-size: 13px;
             font-weight: 600;
@@ -1177,7 +1109,7 @@
         /* Accent Line */
         .accent-line {
             width: 100%;
-            max-width: 380px;
+            max-width: 420px;
             height: 3px;
             background: var(--border);
             margin: 16px auto 12px;
@@ -1197,250 +1129,16 @@
         
         @keyframes accent-travel { 0% { left: -40%; } 100% { left: 100%; } }
         
-        /* CTA */
-        .cta-section { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-        
-        /* Platform Infographic - Compact */
-        .platform-infographic {
-            width: 240px;
-        }
-        
-        .platform-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 10px 10px 0 0;
-            padding: 8px 12px;
-        }
-        
-        [data-theme="dark"] .platform-header {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-bottom: none;
-        }
-        
-        [data-theme="light"] .platform-header {
-            background: rgba(30, 58, 95, 0.05);
-            border: 1px solid rgba(30, 58, 95, 0.15);
-            border-bottom: none;
-        }
-        
-        .platform-label {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: var(--text-secondary);
-        }
-        
-        .platform-dots {
-            display: flex;
-            gap: 4px;
-        }
-        
-        .platform-dots span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border);
-        }
-        
-        .platform-dots span:nth-child(1) { background: var(--red); }
-        .platform-dots span:nth-child(2) { background: var(--gold); }
-        .platform-dots span:nth-child(3) { background: #22C55E; }
-        
-        .platform-screen {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 20px 16px;
-            text-decoration: none;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        [data-theme="dark"] .platform-screen {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-top: none;
-        }
-        
-        [data-theme="light"] .platform-screen {
-            background: rgba(30, 58, 95, 0.03);
-            border: 1px solid rgba(30, 58, 95, 0.15);
-            border-top: none;
-        }
-        
-        [data-theme="dark"] .platform-screen:hover {
-            background: rgba(56, 189, 248, 0.08);
-            border-color: var(--sky);
-        }
-        
-        [data-theme="light"] .platform-screen:hover {
-            background: rgba(2, 132, 199, 0.08);
-            border-color: var(--ocean);
-        }
-        
-        /* Access Button - Hand Touch Impression */
-        .access-button {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-            transition: all 0.3s;
-        }
-        
-        [data-theme="dark"] .access-button { 
-            background: linear-gradient(135deg, var(--ocean), var(--sky));
-            box-shadow: 0 4px 16px rgba(56, 189, 248, 0.3);
-        }
-        [data-theme="light"] .access-button { 
-            background: linear-gradient(135deg, var(--ocean), var(--sky));
-            box-shadow: 0 4px 16px rgba(2, 132, 199, 0.3);
-        }
-        
-        .access-button .hand-touch-icon {
-            width: 32px;
-            height: 32px;
-            color: white;
-        }
-        
-        /* Touch Ripple Animation */
-        .touch-ripple {
-            transform-origin: center 14px;
-            animation: touch-ripple 2s ease-out infinite;
-            opacity: 0;
-        }
-        
-        .touch-ripple.r1 { animation-delay: 0s; }
-        .touch-ripple.r2 { animation-delay: 0.5s; }
-        .touch-ripple.r3 { animation-delay: 1s; }
-        
-        @keyframes touch-ripple {
-            0% {
-                r: 2;
-                opacity: 0.9;
-                stroke-width: 2;
-            }
-            100% {
-                r: 12;
-                opacity: 0;
-                stroke-width: 0.5;
-            }
-        }
-        
-        /* Touch Point Pulse */
-        .touch-point {
-            animation: touch-pulse 1.5s ease-in-out infinite;
-        }
-        
-        @keyframes touch-pulse {
-            0%, 100% { 
-                r: 2;
-                opacity: 0.8;
-            }
-            50% { 
-                r: 3;
-                opacity: 1;
-            }
-        }
-        
-        /* Hand Shape Animation */
-        .hand-shape {
-            animation: hand-press 2s ease-in-out infinite;
-        }
-        
-        @keyframes hand-press {
-            0%, 100% { 
-                transform: translateY(0);
-                opacity: 0.9;
-            }
-            50% { 
-                transform: translateY(-2px);
-                opacity: 1;
-            }
-        }
-        
-        .platform-screen:hover .access-button {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
-        }
-        
-        .platform-screen:hover .touch-point {
-            animation: none;
-            r: 3;
-        }
-        
-        .platform-tagline {
-            font-size: 9px;
-            font-weight: 500;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .platform-footer {
-            border-radius: 0 0 10px 10px;
-            padding: 8px 12px;
-            font-size: 9px;
-            color: var(--text-muted);
-            text-align: center;
-        }
-        
-        [data-theme="dark"] .platform-footer {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-top: none;
-        }
-        
-        [data-theme="light"] .platform-footer {
-            background: rgba(30, 58, 95, 0.03);
-            border: 1px solid rgba(30, 58, 95, 0.15);
-            border-top: none;
-        }
-        
-        .beta-label { font-size: 13px; color: var(--text-muted); margin-top: 12px; }
-        
-        /* User Types */
-        .user-types { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
-        
-        .user-pill {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            padding: 10px 18px;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 30px;
-            transition: all 0.3s;
-        }
-        
-        .user-pill:hover { border-color: var(--sky); }
-        .user-pill svg { width: 18px; height: 18px; }
-        .user-pill.suppliers svg { color: var(--sky); }
-        .user-pill.publishers svg { color: var(--gold); }
-        .user-pill.providers svg { color: var(--red); }
-        
         /* Footer */
         footer {
             padding: 32px 24px;
             text-align: center;
             border-top: 1px solid var(--border);
             margin-top: 20px;
+            position: relative;
+            z-index: 2;
         }
         
-        /* Footer Logo + Company */
         .footer-brand {
             display: flex;
             align-items: center;
@@ -1503,7 +1201,7 @@
             letter-spacing: 0.3px;
         }
         
-        /* Badges Row - CONBEX Identity & Government Alignment - SINGLE ROW */
+        /* Badges Row */
         .badges-row {
             display: flex;
             gap: 16px;
@@ -1540,11 +1238,6 @@
         
         .badge svg { width: 20px; height: 20px; flex-shrink: 0; }
         
-        /* Badge Colors - Canadian Government Theme */
-        .badge.first { border-color: rgba(239, 68, 68, 0.3); }
-        .badge.first:hover { border-color: var(--red); background: rgba(239, 68, 68, 0.08); }
-        .badge.first svg { color: var(--red); }
-        
         .badge.made { border-color: rgba(239, 68, 68, 0.3); }
         .badge.made:hover { border-color: var(--red); background: rgba(239, 68, 68, 0.08); }
         .badge.made svg { color: var(--red); }
@@ -1563,140 +1256,79 @@
         
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-o-container { width: 468px; height: 468px; }
-            .tagline-row { flex-direction: column; gap: 8px; justify-content: center; align-items: center; }
-            .tagline-text { font-size: 11px; letter-spacing: 0.5px; }
-            .powered-badge { font-size: 7px; padding: 2px 5px; }
-            .ai-star-dynamic { width: 12px; height: 12px; }
+            .hero-o-container { width: 80vmin; height: 80vmin; min-width: 300px; min-height: 300px; }
             .wordmark { font-size: 40px; }
             .logo-o { width: 44px; height: 44px; }
+            .tagline-row { flex-direction: column; gap: 8px; }
+            .tagline-text { font-size: 11px; }
             .newsletter-inline { flex-direction: column; gap: 12px; }
-            .newsletter-inline-form { flex-direction: row; }
             .newsletter-inline-input { width: 180px; }
-            .user-types { flex-direction: column; gap: 12px; }
             .footer-brand { flex-direction: column; gap: 10px; }
             .footer-divider { width: 60px; height: 1px; }
-            .footer-links { gap: 20px; }
-            .section-spacer { padding: 40px 20px; min-height: 140px; }
-            .platform-infographic { width: 220px; }
-            .progress-container { width: 240px; }
-            .badges-row { gap: 12px; flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding: 0 20px; }
+            .stats-counter { gap: 20px; }
+            .stat-value { font-size: 18px; }
+            .region-labels { display: none; }
+            .badges-row { gap: 12px; }
             .badge { padding: 10px 16px; font-size: 12px; }
-            .badge svg { width: 18px; height: 18px; }
-            .top-controls { top: 10px; right: 10px; gap: 8px; }
-            .lang-toggle { padding: 6px 10px; font-size: 10px; }
-            .theme-toggle { padding: 8px 12px; }
+            .sub-portals { grid-template-columns: 1fr; gap: 16px; }
+            .sub-portal::before { display: none; }
+            .connections-visual { height: 40px; }
         }
         
         @media (max-width: 480px) {
-            .hero-o-container { width: 364px; height: 364px; }
-            .tagline-text { font-size: 10px; letter-spacing: 0.3px; }
-            .tagline-row { margin-top: 6px; margin-bottom: 8px; gap: 6px; }
-            .powered-badge { font-size: 6px; padding: 2px 4px; }
-            .ai-star-dynamic { width: 10px; height: 10px; }
+            .hero-o-container { width: 85vmin; height: 85vmin; min-width: 260px; min-height: 260px; }
             .wordmark { font-size: 30px; letter-spacing: 2px; }
             .logo-o { width: 34px; height: 34px; }
-            .launch-widget { transform: scale(0.9); }
-            .progress-container { width: 200px; }
-            .newsletter-inline { flex-direction: column; gap: 10px; }
-            .newsletter-inline-title { font-size: 11px; }
-            .newsletter-inline-form { flex-direction: column; gap: 8px; }
-            .newsletter-inline-input { width: 100%; min-width: 200px; }
+            .tagline-text { font-size: 10px; }
+            .stats-counter { gap: 15px; flex-wrap: wrap; }
+            .stat-value { font-size: 16px; }
+            .progress-container { width: 220px; }
+            .newsletter-inline-input { width: 100%; min-width: 180px; }
             .newsletter-inline-btn { width: 100%; }
-            .badges-row { gap: 10px; }
-            .badge { padding: 8px 14px; font-size: 11px; gap: 6px; }
-            .badge svg { width: 16px; height: 16px; }
-            .platform-infographic { width: 200px; }
-            .access-button { width: 42px; height: 42px; }
-            .access-button .hand-touch-icon { width: 26px; height: 26px; }
-            .section-spacer { padding: 40px 20px; min-height: 160px; }
+            .badge { padding: 8px 14px; font-size: 11px; }
             .top-controls { flex-direction: column; gap: 6px; }
+            .portal-card { padding: 20px; }
+            .portal-title { font-size: 18px; }
         }
     </style>
 </head>
 <body>
-    <!-- ==================== DATA ANALYTICS AI BACKGROUND ==================== -->
+    <!-- AI Background -->
     <div class="ai-background">
-        <!-- Subtle Gradient Base -->
         <div class="gradient-base"></div>
-        
-        <!-- Data Grid -->
         <div class="data-grid"></div>
-        
-        <!-- Floating Data Points -->
-        <div class="data-points">
-            <div class="data-point"></div>
-            <div class="data-point"></div>
-            <div class="data-point"></div>
-            <div class="data-point"></div>
-            <div class="data-point"></div>
-            <div class="data-point"></div>
-            <div class="data-point"></div>
-            <div class="data-point"></div>
-        </div>
-        
-        <!-- Analytics Bar Chart -->
-        <div class="analytics-bars">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-        
-        <!-- Analytics Line Chart -->
-        <div class="analytics-line">
-            <svg viewBox="0 0 120 60">
-                <path class="chart-line" d="M0,50 Q20,45 30,30 T60,35 T90,15 T120,25"/>
-            </svg>
-        </div>
-        
-        <!-- Pie Chart -->
-        <div class="pie-chart">
-            <svg viewBox="0 0 40 40">
-                <circle class="pie-segment" cx="20" cy="20" r="16" pathLength="100"/>
-                <circle class="pie-segment" cx="20" cy="20" r="10" pathLength="100"/>
-            </svg>
-        </div>
-        
-        <!-- AI Neural Nodes -->
-        <div class="neural-cluster">
-            <svg viewBox="0 0 100 100">
-                <line class="neural-connection" x1="20" y1="30" x2="50" y2="50"/>
-                <line class="neural-connection" x1="80" y1="25" x2="50" y2="50"/>
-                <line class="neural-connection" x1="70" y1="80" x2="50" y2="50"/>
-                <line class="neural-connection" x1="25" y1="75" x2="50" y2="50"/>
-                <circle class="neural-node-circle" cx="20" cy="30" r="4"/>
-                <circle class="neural-node-circle" cx="80" cy="25" r="4"/>
-                <circle class="neural-node-circle" cx="70" cy="80" r="4"/>
-                <circle class="neural-node-circle" cx="25" cy="75" r="4"/>
-                <circle class="neural-node-circle" cx="50" cy="50" r="6"/>
-            </svg>
-        </div>
-        
-        <!-- Binary Data Streams -->
-        <span class="binary-stream">01001 10110 01101</span>
-        <span class="binary-stream">11010 00101 10011</span>
-        <span class="binary-stream">10101 01010 11001</span>
-        
-        <!-- Soft Light Spots -->
-        <div class="light-spot"></div>
-        <div class="light-spot"></div>
-        
-        <!-- Subtle Vignette -->
         <div class="vignette"></div>
     </div>
     
-    <!-- Top Controls - Language & Theme -->
+    <!-- Maple Leaf Watermark -->
+    <svg class="maple-watermark" viewBox="0 0 100 100">
+        <path fill="currentColor" d="M50 5 L52 20 L65 15 L60 25 L75 30 L62 35 L70 50 L55 45 L55 60 L50 55 L45 60 L45 45 L30 50 L38 35 L25 30 L40 25 L35 15 L48 20 Z"/>
+        <rect x="47" y="55" width="6" height="20" fill="currentColor"/>
+    </svg>
+    
+    <!-- Region Labels -->
+    <div class="region-labels">
+        <div class="region-label" style="top: 45%; left: 3%;">British Columbia</div>
+        <div class="region-label" style="top: 35%; left: 18%;">Alberta</div>
+        <div class="region-label" style="top: 45%; left: 25%;">Saskatchewan</div>
+        <div class="region-label" style="top: 55%; left: 30%;">Manitoba</div>
+        <div class="region-label" style="bottom: 25%; left: 42%;">Ontario</div>
+        <div class="region-label" style="bottom: 20%; right: 30%;">Quebec</div>
+        <div class="region-label" style="top: 55%; right: 8%;">Atlantic</div>
+        <div class="region-label" style="top: 8%; left: 35%;">Yukon</div>
+        <div class="region-label" style="top: 5%; left: 50%;">NWT</div>
+        <div class="region-label" style="top: 8%; right: 30%;">Nunavut</div>
+    </div>
+    
+    <!-- Particle Canvas -->
+    <canvas id="flow-canvas"></canvas>
+    
+    <!-- Top Controls -->
     <div class="top-controls">
-        <!-- Language Toggle -->
         <div class="lang-toggle">
             <span class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</span>
             <span class="lang-btn" data-lang="fr" onclick="setLanguage('fr')">FR</span>
         </div>
-        
-        <!-- Theme Toggle -->
         <button class="theme-toggle" onclick="toggleTheme()">
             <svg class="sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -1710,111 +1342,53 @@
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero-section">
         
-        <!-- THE BIG O -->
-        <div class="hero-o-container">
-            <svg class="hero-o" viewBox="0 0 400 400">
-                <!-- Gradient definitions for trails - All CONBEX colors -->
+        <!-- THE BIG O with Canvas Animation -->
+        <div class="hero-o-container" id="heroO">
+            <svg class="hero-svg" viewBox="0 0 400 400">
                 <defs>
-                    <linearGradient id="trailGradSky" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#38BDF8;stop-opacity:0"/>
-                        <stop offset="100%" style="stop-color:#38BDF8;stop-opacity:1"/>
-                    </linearGradient>
-                    <linearGradient id="trailGradGold" x1="100%" y1="0%" x2="0%" y2="0%">
-                        <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:0"/>
-                        <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1"/>
-                    </linearGradient>
-                    <linearGradient id="trailGradOcean" x1="0%" y1="100%" x2="0%" y2="0%">
-                        <stop offset="0%" style="stop-color:#0284C7;stop-opacity:0"/>
-                        <stop offset="100%" style="stop-color:#0284C7;stop-opacity:1"/>
-                    </linearGradient>
-                    <linearGradient id="trailGradRed" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#EF4444;stop-opacity:0"/>
-                        <stop offset="100%" style="stop-color:#EF4444;stop-opacity:1"/>
-                    </linearGradient>
-                    <linearGradient id="trailGradSkyLight" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#7DD3FC;stop-opacity:0"/>
-                        <stop offset="100%" style="stop-color:#7DD3FC;stop-opacity:1"/>
-                    </linearGradient>
-                    <linearGradient id="trailGradNavy" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#1E3A5F;stop-opacity:0"/>
-                        <stop offset="100%" style="stop-color:#1E3A5F;stop-opacity:1"/>
-                    </linearGradient>
-                    <linearGradient id="trailGradSlate" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#64748B;stop-opacity:0"/>
-                        <stop offset="100%" style="stop-color:#64748B;stop-opacity:1"/>
-                    </linearGradient>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="4" result="blur"/>
+                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                    </filter>
                 </defs>
                 
-                <!-- Radar expanding rings - Dense dots -->
-                <circle class="radar-ring" cx="200" cy="200" r="25"/>
-                <circle class="radar-ring" cx="200" cy="200" r="25"/>
-                <circle class="radar-ring" cx="200" cy="200" r="25"/>
-                <circle class="radar-ring" cx="200" cy="200" r="25"/>
-                <circle class="radar-ring" cx="200" cy="200" r="25"/>
-                <circle class="radar-ring" cx="200" cy="200" r="25"/>
+                <!-- Outer glow ring -->
+                <circle class="outer-ring-glow" cx="200" cy="200" r="145"/>
                 
-                <!-- ALL DOT TRAILS -->
-                <path class="dot-trail t-top" d="M200,-50 L200,200" stroke-dasharray="220" stroke-dashoffset="220"/>
-                <path class="dot-trail t-right" d="M450,200 L200,200" stroke-dasharray="220" stroke-dashoffset="220"/>
-                <path class="dot-trail t-bottom" d="M200,450 L200,200" stroke-dasharray="220" stroke-dashoffset="220"/>
-                <path class="dot-trail t-left" d="M-50,200 L200,200" stroke-dasharray="220" stroke-dashoffset="220"/>
-                <path class="dot-trail t-tr" d="M430,-30 L200,200" stroke-dasharray="280" stroke-dashoffset="280"/>
-                <path class="dot-trail t-br" d="M430,430 L200,200" stroke-dasharray="280" stroke-dashoffset="280"/>
-                <path class="dot-trail t-bl" d="M-30,430 L200,200" stroke-dasharray="280" stroke-dashoffset="280"/>
-                <path class="dot-trail t-tl" d="M-30,-30 L200,200" stroke-dasharray="280" stroke-dashoffset="280"/>
+                <!-- Inner glow -->
+                <circle class="inner-glow" cx="200" cy="200" r="130"/>
                 
-                <!-- Additional trails for smaller dots -->
-                <path class="dot-trail t-top2" d="M120,-50 L200,200" stroke-dasharray="220" stroke-dashoffset="220"/>
-                <path class="dot-trail t-right2" d="M450,120 L200,200" stroke-dasharray="220" stroke-dashoffset="220"/>
-                <path class="dot-trail t-bottom2" d="M280,450 L200,200" stroke-dasharray="220" stroke-dashoffset="220"/>
-                <path class="dot-trail t-left2" d="M-50,280 L200,200" stroke-dasharray="220" stroke-dashoffset="220"/>
-                <path class="dot-trail t-tr2" d="M380,50 L200,200" stroke-dasharray="280" stroke-dashoffset="280"/>
-                <path class="dot-trail t-bl2" d="M30,360 L200,200" stroke-dasharray="280" stroke-dashoffset="280"/>
-                <path class="dot-trail t-tl2" d="M50,50 L200,200" stroke-dasharray="280" stroke-dashoffset="280"/>
-                <path class="dot-trail t-br2" d="M360,360 L200,200" stroke-dasharray="280" stroke-dashoffset="280"/>
+                <!-- Scan Rings -->
+                <circle class="scan-ring s1" cx="200" cy="200" r="25" stroke="var(--sky)"/>
+                <circle class="scan-ring s2" cx="200" cy="200" r="25" stroke="var(--ocean)"/>
+                <circle class="scan-ring s3" cx="200" cy="200" r="25" stroke="var(--gold)"/>
+                <circle class="scan-ring s4" cx="200" cy="200" r="25" stroke="var(--emerald)"/>
                 
-                <!-- INWARD DOTS - Glowing -->
-                <!-- Large dots -->
-                <circle class="dot-in d1" cx="200" cy="-50"/>
-                <circle class="dot-in d2" cx="450" cy="200"/>
-                <circle class="dot-in d3" cx="200" cy="450"/>
-                <circle class="dot-in d4" cx="-50" cy="200"/>
+                <!-- Main Ring -->
+                <circle class="main-ring" cx="200" cy="200" r="130" stroke-dasharray="820" stroke-dashoffset="820"/>
                 
-                <!-- Medium dots (diagonals) -->
-                <circle class="dot-in d5" cx="430" cy="-30"/>
-                <circle class="dot-in d6" cx="430" cy="430"/>
-                <circle class="dot-in d7" cx="-30" cy="430"/>
-                <circle class="dot-in d8" cx="-30" cy="-30"/>
+                <!-- Inner ring highlight -->
+                <circle class="inner-ring-highlight" cx="200" cy="200" r="124"/>
                 
-                <!-- Small dots -->
-                <circle class="dot-in d9" cx="120" cy="-50"/>
-                <circle class="dot-in d10" cx="450" cy="120"/>
-                <circle class="dot-in d11" cx="280" cy="450"/>
-                <circle class="dot-in d12" cx="-50" cy="280"/>
-                
-                <!-- Extra small dots -->
-                <circle class="dot-in d13" cx="380" cy="50"/>
-                <circle class="dot-in d14" cx="30" cy="360"/>
-                <circle class="dot-in d15" cx="50" cy="50"/>
-                <circle class="dot-in d16" cx="360" cy="360"/>
-                
-                <!-- OUTWARD DOTS - Low visibility -->
-                <circle class="dot-out o1" cx="200" cy="200"/>
-                <circle class="dot-out o2" cx="200" cy="200"/>
-                <circle class="dot-out o3" cx="200" cy="200"/>
-                <circle class="dot-out o4" cx="200" cy="200"/>
-                <circle class="dot-out o5" cx="200" cy="200"/>
-                <circle class="dot-out o6" cx="200" cy="200"/>
-                
-                <!-- Main O ring - DOTTED -->
-                <circle class="hero-main-ring" cx="200" cy="200" r="155"/>
-                
-                <!-- Inner glow - DOTTED -->
-                <circle class="hero-inner-glow" cx="200" cy="200" r="45"/>
-                
-                <!-- Center core -->
-                <circle class="hero-core" cx="200" cy="200" r="24"/>
+                <!-- Core -->
+                <circle class="core" cx="200" cy="200" r="0" filter="url(#glow)"/>
             </svg>
+        </div>
+        
+        <!-- Stats Counter -->
+        <div class="stats-counter">
+            <div class="stat-item">
+                <div class="stat-value" id="stat-discovered">1,247</div>
+                <div class="stat-label" data-i18n="statDiscovered">Discovered</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-analyzed">1,189</div>
+                <div class="stat-label" data-i18n="statAnalyzed">Analyzed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="stat-matched">892</div>
+                <div class="stat-label" data-i18n="statMatched">Matched</div>
+            </div>
         </div>
         
         <!-- Launch Progress Widget -->
@@ -1831,54 +1405,102 @@
             <!-- Newsletter Inline -->
             <div class="newsletter-inline">
                 <span class="newsletter-inline-title" data-i18n="notifyTitle">Get notified when we launch</span>
-                <form class="newsletter-inline-form" onsubmit="handleSubscribe(event)">
-                    <input type="email" class="newsletter-inline-input" data-i18n-placeholder="emailPlaceholder" placeholder="Enter your email" required>
+                <form class="newsletter-inline-form" id="newsletter-form" action="https://formspree.io/f/mqeeaarv" method="POST">
+                    <input type="email" name="email" class="newsletter-inline-input" data-i18n-placeholder="emailPlaceholder" placeholder="Enter your email" required>
+                    <input type="hidden" name="_subject" value="CONBEX Newsletter Signup">
+                    <input type="hidden" name="source" value="index-page">
                     <button type="submit" class="newsletter-inline-btn" data-i18n="notifyBtn">Notify Me</button>
                 </form>
             </div>
         </div>
     </section>
     
-    <!-- ==================== PLATFORM CENTERED ==================== -->
-    <div class="section-spacer">
-        <!-- Platform Infographic -->
-        <div class="platform-infographic">
-            <div class="platform-header">
-                <span class="platform-label">conbex.ca/beta</span>
-                <div class="platform-dots">
-                    <span></span><span></span><span></span>
+    <!-- ==================== PORTAL HUB SECTION ==================== -->
+    <section class="portal-hub-section">
+        <div class="portal-hub">
+            
+            <!-- Main Beta Portal -->
+            <div class="main-portal">
+                <a href="beta.html" class="portal-card main">
+                    <div class="portal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+                        </svg>
+                    </div>
+                    <div class="portal-title" data-i18n="betaPortal">Beta Platform</div>
+                    <div class="portal-subtitle" data-i18n="betaPortalDesc">Access the full procurement intelligence platform</div>
+                    <div class="portal-badge" data-i18n="applyAccess">Apply for Access</div>
+                </a>
+            </div>
+            
+            <!-- Connection Lines Visual -->
+            <div class="connections-visual">
+                <div class="connection-line left"></div>
+                <div class="connection-line center"></div>
+                <div class="connection-line right"></div>
+                <div class="flow-dot d1"></div>
+                <div class="flow-dot d2"></div>
+                <div class="flow-dot d3"></div>
+            </div>
+            
+            <!-- Sub-Portals -->
+            <div class="sub-portals">
+                <!-- Suppliers Portal -->
+                <div class="sub-portal suppliers" onclick="window.location.href='beta.html?type=suppliers'">
+                    <div class="sub-portal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                    </div>
+                    <div class="sub-portal-title" data-i18n="suppliers">Suppliers</div>
+                    <div class="sub-portal-desc" data-i18n="suppliersDesc">Find contracts, bids & opportunities</div>
+                    <div class="sub-portal-status">
+                        <span class="dot"></span>
+                        <span data-i18n="comingSoon">Coming Soon</span>
+                    </div>
+                </div>
+                
+                <!-- Publishers Portal -->
+                <div class="sub-portal publishers" onclick="window.location.href='beta.html?type=publishers'">
+                    <div class="sub-portal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <div class="sub-portal-title" data-i18n="publishers">Publishers</div>
+                    <div class="sub-portal-desc" data-i18n="publishersDesc">Post & manage procurement opportunities</div>
+                    <div class="sub-portal-status">
+                        <span class="dot"></span>
+                        <span data-i18n="comingSoon">Coming Soon</span>
+                    </div>
+                </div>
+                
+                <!-- Service Providers Portal -->
+                <div class="sub-portal providers" onclick="window.location.href='beta.html?type=providers'">
+                    <div class="sub-portal-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="sub-portal-title" data-i18n="providers">Service Providers</div>
+                    <div class="sub-portal-desc" data-i18n="providersDesc">Offer consulting & procurement services</div>
+                    <div class="sub-portal-status">
+                        <span class="dot"></span>
+                        <span data-i18n="comingSoon">Coming Soon</span>
+                    </div>
                 </div>
             </div>
-            <a href="beta.html" class="platform-screen">
-                <div class="access-button">
-                    <svg class="hand-touch-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Touch ripple rings from finger tip -->
-                        <circle class="touch-ripple r1" cx="24" cy="14" r="4" fill="none" stroke="currentColor" stroke-width="1"/>
-                        <circle class="touch-ripple r2" cx="24" cy="14" r="4" fill="none" stroke="currentColor" stroke-width="1"/>
-                        <circle class="touch-ripple r3" cx="24" cy="14" r="4" fill="none" stroke="currentColor" stroke-width="1"/>
-                        <!-- Touch point -->
-                        <circle class="touch-point" cx="24" cy="14" r="2.5" fill="currentColor"/>
-                        <!-- Hand/Finger pointing down -->
-                        <path class="hand-shape" d="M24 16v8M24 24c0 0-6 2-6 8v4h12v-4c0-6-6-8-6-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                        <!-- Fingernail detail -->
-                        <ellipse class="finger-nail" cx="24" cy="38" rx="4" ry="2" fill="currentColor" opacity="0.3"/>
-                    </svg>
-                </div>
-                <div class="platform-tagline" data-i18n="betaTesting">Beta testing in progress</div>
-            </a>
-            <div class="platform-footer" data-i18n="earlyAccess">Early access for registered partners</div>
+            
         </div>
-    </div>
+    </section>
     
     <!-- ==================== MAIN CONTENT ==================== -->
     <main class="main-content">
-        <!-- Logo -->
         <div class="logo-section">
             <div class="wordmark">
                 <span class="letter">C</span>
                 <span class="logo-o">
                     <svg viewBox="0 0 72 72">
-                        <circle class="logo-ring-out" cx="36" cy="36" r="6"/>
                         <circle class="logo-ring-out" cx="36" cy="36" r="6"/>
                         <circle class="logo-ring-out" cx="36" cy="36" r="6"/>
                         <circle class="logo-ring-out" cx="36" cy="36" r="6"/>
@@ -1898,12 +1520,13 @@
                 <span class="reg">®</span>
             </div>
             
-            <!-- Core Tagline - Right aligned under wordmark -->
+            <!-- UPDATED TAGLINE: Discover. Analyze. Win. Manage. -->
             <div class="tagline-row">
                 <div class="tagline-text">
                     <span class="tag-word" data-i18n="discover">Discover</span><span class="tag-dot">.</span>
                     <span class="tag-word" data-i18n="analyze">Analyze</span><span class="tag-dot">.</span>
-                    <span class="tag-word" data-i18n="win">Win</span><span class="tag-dot">.</span><span class="tm">™</span>
+                    <span class="tag-word" data-i18n="win">Win</span><span class="tag-dot">.</span>
+                    <span class="tag-word" data-i18n="manage">Manage</span><span class="tag-dot">.</span><span class="tm">™</span>
                 </div>
                 <div class="powered-row">
                     <div class="powered-badge">
@@ -1929,33 +1552,9 @@
             
             <div class="descriptor" data-i18n="descriptor">Canada's Opportunities Nexus & Businesses Exchange</div>
         </div>
-        
-        <div class="cta-section">
-            <div class="user-types">
-                <span class="user-pill suppliers">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                    </svg>
-                    <span data-i18n="suppliers">Suppliers</span>
-                </span>
-                <span class="user-pill publishers">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                    <span data-i18n="publishers">Publishers</span>
-                </span>
-                <span class="user-pill providers">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    <span data-i18n="providers">Service Providers</span>
-                </span>
-            </div>
-        </div>
     </main>
     
     <footer>
-        <!-- Logo + Company Name side by side -->
         <div class="footer-brand">
             <div class="footer-logo">
                 <span>C</span>
@@ -1980,18 +1579,16 @@
             <a href="#" data-i18n="careers">Careers</a>
         </div>
         
-        <!-- Badges Row - CONBEX Identity & Government Alignment -->
+        <!-- Badges Row -->
         <div class="badges-row">
             <div class="badge made">
                 <svg viewBox="0 0 24 24" fill="currentColor">
-                    <!-- Maple Leaf -->
                     <path d="M12 2L13.5 6.5L18 5.5L15.5 9L20 10.5L16 12L18 16L14 14.5L12 22L10 14.5L6 16L8 12L4 10.5L8.5 9L6 5.5L10.5 6.5L12 2Z"/>
                 </svg>
                 <span data-i18n="madeCanada">100% Canadian</span>
             </div>
             <div class="badge indigenous">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <!-- Medicine Wheel / Circle of Unity -->
                     <circle cx="12" cy="12" r="9"/>
                     <circle cx="12" cy="12" r="3"/>
                     <line x1="12" y1="3" x2="12" y2="9"/>
@@ -2024,89 +1621,440 @@
     </footer>
     
     <script>
-        // Translation System
+        // ==================== PARTICLE ANIMATION SYSTEM ====================
+        const canvas = document.getElementById('flow-canvas');
+        const ctx = canvas.getContext('2d');
+        let inwardParticles = [];
+        let outwardParticles = [];
+        let impactFlashes = [];
+        
+        let oCenterX, oCenterY;
+        let isHovering = false;
+        let speedMultiplier = 1;
+        
+        // Stats
+        let statsDiscovered = 1247;
+        let statsAnalyzed = 1189;
+        let statsMatched = 892;
+        
+        // Canadian Regions - Accurate Map
+        const REGIONS = [
+            { name: 'British Columbia', angleMin: Math.PI * 0.9, angleMax: Math.PI * 1.1 },
+            { name: 'Alberta', angleMin: Math.PI * 0.75, angleMax: Math.PI * 0.9 },
+            { name: 'Saskatchewan', angleMin: Math.PI * 0.6, angleMax: Math.PI * 0.75 },
+            { name: 'Manitoba', angleMin: Math.PI * 0.5, angleMax: Math.PI * 0.6 },
+            { name: 'Ontario', angleMin: Math.PI * 1.4, angleMax: Math.PI * 1.7 },
+            { name: 'Quebec', angleMin: Math.PI * 1.7, angleMax: Math.PI * 2.0 },
+            { name: 'Atlantic', angleMin: Math.PI * 0.0, angleMax: Math.PI * 0.2 },
+            { name: 'Yukon', angleMin: Math.PI * 0.55, angleMax: Math.PI * 0.65 },
+            { name: 'NWT', angleMin: Math.PI * 0.45, angleMax: Math.PI * 0.55 },
+            { name: 'Nunavut', angleMin: Math.PI * 0.35, angleMax: Math.PI * 0.5 },
+        ];
+        
+        // Opportunity Types - Color
+        const OPPORTUNITY_TYPES = [
+            { name: 'Government Contract', color: '#0284C7' },
+            { name: 'Grants & Funding', color: '#10B981' },
+            { name: 'Partnership', color: '#F59E0B' },
+            { name: 'Indigenous (PSIB)', color: '#EF4444' },
+            { name: 'Tender/RFP', color: '#06B6D4' },
+            { name: 'Private Sector', color: '#8B5CF6' },
+        ];
+        
+        // Value Sizes
+        const VALUE_SIZES = [
+            { name: 'Small', min: 2, max: 4, weight: 0.45 },
+            { name: 'Medium', min: 5, max: 8, weight: 0.35 },
+            { name: 'Large', min: 9, max: 14, weight: 0.20 },
+        ];
+        
+        const VALUE_COLORS = ['#10B981', '#F59E0B', '#38BDF8', '#8B5CF6', '#22D3EE'];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth * 2;
+            canvas.height = window.innerHeight * 2;
+            ctx.scale(2, 2);
+        }
+        
+        // Update O center position - CALLED EVERY FRAME to fix scroll issue
+        function updateOCenter() {
+            const heroO = document.getElementById('heroO');
+            if (heroO) {
+                const rect = heroO.getBoundingClientRect();
+                oCenterX = rect.left + rect.width / 2;
+                oCenterY = rect.top + rect.height / 2;
+            }
+        }
+        
+        // Impact Flash
+        class ImpactFlash {
+            constructor(color) {
+                this.x = oCenterX;
+                this.y = oCenterY;
+                this.color = color;
+                this.radius = 5;
+                this.opacity = 0.8;
+            }
+            
+            update() {
+                // Update position to follow O
+                this.x = oCenterX;
+                this.y = oCenterY;
+                this.radius += 4;
+                this.opacity -= 0.04;
+                return this.opacity > 0;
+            }
+            
+            draw() {
+                ctx.globalAlpha = this.opacity * 0.6;
+                ctx.strokeStyle = this.color;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                ctx.globalAlpha = this.opacity * 0.3;
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+                gradient.addColorStop(0, this.color);
+                gradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        // Inward Particle
+        class InwardParticle {
+            constructor() { this.reset(); }
+            
+            reset() {
+                const region = REGIONS[Math.floor(Math.random() * REGIONS.length)];
+                const angle = region.angleMin + Math.random() * (region.angleMax - region.angleMin);
+                
+                const oppType = OPPORTUNITY_TYPES[Math.floor(Math.random() * OPPORTUNITY_TYPES.length)];
+                this.color = oppType.color;
+                
+                const valueRoll = Math.random();
+                let cumWeight = 0;
+                let valueSize = VALUE_SIZES[0];
+                for (const vs of VALUE_SIZES) {
+                    cumWeight += vs.weight;
+                    if (valueRoll <= cumWeight) { valueSize = vs; break; }
+                }
+                this.size = valueSize.min + Math.random() * (valueSize.max - valueSize.min);
+                
+                // Spawn from edge of viewport relative to current O center
+                const distance = 350 + Math.random() * 200;
+                this.x = oCenterX + Math.cos(angle) * distance;
+                this.y = oCenterY + Math.sin(angle) * distance;
+                
+                this.speed = 2 + Math.random() * 2;
+                this.opacity = 0;
+                this.maxOpacity = 0.6 + Math.random() * 0.4;
+                this.trail = [];
+                this.trailLength = 10;
+            }
+            
+            update() {
+                // Always target current O center (fixes scroll issue)
+                const targetX = oCenterX;
+                const targetY = oCenterY;
+                
+                const dx = targetX - this.x;
+                const dy = targetY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const currentSpeed = this.speed * speedMultiplier;
+                
+                if (distance > 5) {
+                    this.x += (dx / distance) * currentSpeed;
+                    this.y += (dy / distance) * currentSpeed;
+                    this.opacity = Math.min(this.maxOpacity, this.opacity + 0.025);
+                    this.trail.push({ x: this.x, y: this.y, opacity: this.opacity });
+                    if (this.trail.length > this.trailLength) this.trail.shift();
+                } else {
+                    impactFlashes.push(new ImpactFlash(this.color));
+                    spawnOneOutwardParticle();
+                    updateStats();
+                    this.reset();
+                }
+            }
+            
+            draw() {
+                for (let i = 0; i < this.trail.length; i++) {
+                    const t = this.trail[i];
+                    const progress = i / this.trail.length;
+                    ctx.globalAlpha = progress * t.opacity * 0.3;
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(t.x, t.y, this.size * progress * 0.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                
+                if (this.size > 6) {
+                    ctx.globalAlpha = this.opacity * 0.2;
+                    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size * 2);
+                    gradient.addColorStop(0, this.color);
+                    gradient.addColorStop(1, 'transparent');
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        // Outward Particle
+        class OutwardParticle {
+            constructor() {
+                this.color = VALUE_COLORS[Math.floor(Math.random() * VALUE_COLORS.length)];
+                this.size = 4 + Math.random() * 5;
+                this.x = oCenterX;
+                this.y = oCenterY;
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = 0.8 + Math.random() * 1.2;
+                const targetDist = 200 + Math.random() * 150;
+                this.targetX = oCenterX + Math.cos(this.angle) * targetDist;
+                this.targetY = oCenterY + Math.sin(this.angle) * targetDist;
+                this.opacity = 0;
+                this.maxOpacity = 0.06 + Math.random() * 0.06;
+                this.life = 0;
+                this.maxLife = 80 + Math.random() * 60;
+            }
+            
+            update() {
+                this.life++;
+                const dx = this.targetX - this.x;
+                const dy = this.targetY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance > 10 && this.life < this.maxLife) {
+                    this.x += (dx / distance) * this.speed * speedMultiplier;
+                    this.y += (dy / distance) * this.speed * speedMultiplier;
+                    if (this.life < 15) this.opacity = Math.min(this.maxOpacity, this.opacity + 0.006);
+                    else if (this.life > this.maxLife - 25) this.opacity -= 0.002;
+                } else {
+                    this.opacity -= 0.008;
+                }
+                return this.opacity > 0;
+            }
+            
+            draw() {
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.globalAlpha = 1;
+            }
+        }
+        
+        // Connection Lines
+        function drawConnectionLines() {
+            for (let i = 0; i < inwardParticles.length; i++) {
+                for (let j = i + 1; j < inwardParticles.length; j++) {
+                    const p1 = inwardParticles[i];
+                    const p2 = inwardParticles[j];
+                    const dx = p2.x - p1.x;
+                    const dy = p2.y - p1.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 120 && distance > 30) {
+                        const opacity = (1 - distance / 120) * 0.12 * Math.min(p1.opacity, p2.opacity);
+                        ctx.globalAlpha = opacity;
+                        ctx.strokeStyle = p1.color;
+                        ctx.lineWidth = 0.5;
+                        ctx.setLineDash([3, 6]);
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                        ctx.setLineDash([]);
+                    }
+                }
+            }
+            ctx.globalAlpha = 1;
+        }
+        
+        function spawnOneOutwardParticle() {
+            outwardParticles.push(new OutwardParticle());
+        }
+        
+        function updateStats() {
+            statsDiscovered++;
+            statsAnalyzed++;
+            if (Math.random() > 0.3) statsMatched++;
+            
+            document.getElementById('stat-discovered').textContent = statsDiscovered.toLocaleString();
+            document.getElementById('stat-analyzed').textContent = statsAnalyzed.toLocaleString();
+            document.getElementById('stat-matched').textContent = statsMatched.toLocaleString();
+        }
+        
+        function initParticles() {
+            updateOCenter(); // Get initial position
+            inwardParticles = [];
+            outwardParticles = [];
+            impactFlashes = [];
+            
+            for (let i = 0; i < 18; i++) {
+                inwardParticles.push(new InwardParticle());
+            }
+        }
+        
+        function animateCanvas() {
+            // UPDATE O CENTER EVERY FRAME - THIS FIXES THE SCROLL ISSUE
+            updateOCenter();
+            
+            ctx.clearRect(0, 0, canvas.width / 2, canvas.height / 2);
+            drawConnectionLines();
+            
+            inwardParticles.forEach(p => { p.update(); p.draw(); });
+            
+            impactFlashes = impactFlashes.filter(f => {
+                const alive = f.update();
+                if (alive) f.draw();
+                return alive;
+            });
+            
+            outwardParticles = outwardParticles.filter(p => {
+                const alive = p.update();
+                if (alive) p.draw();
+                return alive;
+            });
+            
+            requestAnimationFrame(animateCanvas);
+        }
+        
+        // Hover effect
+        document.getElementById('heroO').addEventListener('mouseenter', () => {
+            isHovering = true;
+            speedMultiplier = 1.5;
+        });
+        
+        document.getElementById('heroO').addEventListener('mouseleave', () => {
+            isHovering = false;
+            speedMultiplier = 1;
+        });
+        
+        // GSAP Animation
+        function playAnimation() {
+            gsap.killTweensOf("*");
+            resizeCanvas();
+            initParticles();
+            
+            gsap.set('.scan-ring', { opacity: 0 });
+            gsap.set('.core', { attr: { r: 0 } });
+            gsap.set('.main-ring', { strokeDashoffset: 820 });
+            gsap.set('.inner-glow', { opacity: 0 });
+            
+            const tl = gsap.timeline();
+            
+            tl.to('.inner-glow', { opacity: 0.05, duration: 0.5 });
+            tl.to('.main-ring', { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut' }, '-=0.3');
+            tl.to('.core', { attr: { r: 20 }, duration: 0.5, ease: 'back.out(2)' }, '-=0.6');
+            
+            ['.s1', '.s2', '.s3', '.s4'].forEach((ring, i) => {
+                gsap.to(ring, {
+                    attr: { r: 150 },
+                    opacity: 0,
+                    strokeWidth: 0.5,
+                    duration: 2.5 + i * 0.2,
+                    ease: 'power1.out',
+                    repeat: -1,
+                    delay: i * 0.6
+                });
+                gsap.set(ring, { opacity: 0.6, attr: { r: 25 } });
+            });
+            
+            gsap.to('.core', { attr: { r: 24 }, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+            gsap.to('.inner-glow', { opacity: 0.08, duration: 2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+        }
+        
+        // ==================== TRANSLATION SYSTEM ====================
         const translations = {
             en: {
-                // Tagline
                 discover: 'Discover',
                 analyze: 'Analyze',
                 win: 'Win',
+                manage: 'Manage',
                 powered: 'Powered by AI',
                 descriptor: "Canada's Opportunities Nexus & Businesses Exchange",
-                
-                // Hero & Platform
                 launching: 'Launching Soon',
                 development: 'Development in Progress',
                 betaTesting: 'Beta testing in progress',
                 earlyAccess: 'Early access for registered partners',
-                
-                // User Types
                 suppliers: 'Suppliers',
                 publishers: 'Publishers',
                 providers: 'Service Providers',
-                
-                // Newsletter
+                suppliersDesc: 'Find contracts, bids & opportunities',
+                publishersDesc: 'Post & manage procurement opportunities',
+                providersDesc: 'Offer consulting & procurement services',
+                comingSoon: 'Coming Soon',
+                betaPortal: 'Beta Platform',
+                betaPortalDesc: 'Access the full procurement intelligence platform',
+                applyAccess: 'Apply for Access',
                 notifyTitle: 'Get notified when we launch',
                 emailPlaceholder: 'Enter your email',
                 notifyBtn: 'Notify Me',
-                
-                // Footer Links
                 contact: 'Contact',
                 about: 'About',
                 privacy: 'Privacy',
                 terms: 'Terms',
                 careers: 'Careers',
-                
-                // Badges
-                canadaFirst: "Canada's First",
-                madeCanada: 'Made in Canada',
+                madeCanada: '100% Canadian',
                 psib: 'PSIB Compliant',
                 secure: 'Secure Platform',
                 accessible: 'WCAG Accessible',
-                
-                // Copyright
-                copyright: '© 2025-26 CONBEX® Technologies Inc. All rights reserved.'
+                copyright: '© 2025-26 CONBEX® Technologies Inc. All rights reserved.',
+                statDiscovered: 'Discovered',
+                statAnalyzed: 'Analyzed',
+                statMatched: 'Matched'
             },
             fr: {
-                // Tagline
                 discover: 'Découvrir',
                 analyze: 'Analyser',
                 win: 'Gagner',
+                manage: 'Gérer',
                 powered: 'Propulsé par IA',
                 descriptor: "Le Carrefour des Opportunités et Échanges d'Affaires du Canada",
-                
-                // Hero & Platform
                 launching: 'Lancement Imminent',
                 development: 'Développement en cours',
                 betaTesting: 'Tests bêta en cours',
                 earlyAccess: 'Accès anticipé pour partenaires inscrits',
-                
-                // User Types
                 suppliers: 'Fournisseurs',
                 publishers: 'Éditeurs',
                 providers: 'Prestataires de Services',
-                
-                // Newsletter
+                suppliersDesc: 'Trouvez des contrats, appels d\'offres et opportunités',
+                publishersDesc: 'Publiez et gérez les opportunités d\'approvisionnement',
+                providersDesc: 'Offrez des services de conseil et d\'approvisionnement',
+                comingSoon: 'Bientôt',
+                betaPortal: 'Plateforme Bêta',
+                betaPortalDesc: 'Accédez à la plateforme complète d\'intelligence en approvisionnement',
+                applyAccess: 'Demander l\'accès',
                 notifyTitle: 'Soyez informé de notre lancement',
                 emailPlaceholder: 'Entrez votre courriel',
                 notifyBtn: 'M\'aviser',
-                
-                // Footer Links
                 contact: 'Contact',
                 about: 'À propos',
                 privacy: 'Confidentialité',
                 terms: 'Conditions',
                 careers: 'Carrières',
-                
-                // Badges
-                canadaFirst: 'Premier au Canada',
                 madeCanada: 'Fait au Canada',
                 psib: 'Conforme PSIB',
                 secure: 'Plateforme Sécurisée',
                 accessible: 'Accessible WCAG',
-                
-                // Copyright
-                copyright: '© 2025-26 CONBEX® Technologies Inc. Tous droits réservés.'
+                copyright: '© 2025-26 CONBEX® Technologies Inc. Tous droits réservés.',
+                statDiscovered: 'Découvertes',
+                statAnalyzed: 'Analysées',
+                statMatched: 'Jumelées'
             }
         };
         
@@ -2116,12 +2064,10 @@
             currentLang = lang;
             localStorage.setItem('conbex-lang', lang);
             
-            // Update active state on buttons
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
             
-            // Update all translatable elements
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.dataset.i18n;
                 if (translations[lang][key]) {
@@ -2129,7 +2075,6 @@
                 }
             });
             
-            // Update placeholders
             document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
                 const key = el.dataset.i18nPlaceholder;
                 if (translations[lang][key]) {
@@ -2137,7 +2082,6 @@
                 }
             });
             
-            // Update html lang attribute
             document.documentElement.lang = lang;
         }
         
@@ -2148,26 +2092,81 @@
             localStorage.setItem('conbex-theme', newTheme);
         }
         
-        // Initialize on page load
+        // Initialize
         (function() {
-            // Theme
             const savedTheme = localStorage.getItem('conbex-theme');
             if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
             
-            // Language
             const savedLang = localStorage.getItem('conbex-lang') || 'en';
             setLanguage(savedLang);
         })();
         
-        function handleSubscribe(e) {
-            e.preventDefault();
-            const email = e.target.querySelector('input').value;
-            const msg = currentLang === 'fr' 
-                ? 'Merci! Nous vous informerons à ' + email + ' lors du lancement de CONBEX.'
-                : 'Thank you! We\'ll notify you at ' + email + ' when CONBEX launches.';
-            alert(msg);
-            e.target.reset();
-        }
+        // Newsletter Form with Formspree
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const form = e.target;
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.textContent;
+                    
+                    // Show loading state
+                    submitBtn.textContent = currentLang === 'fr' ? 'Envoi...' : 'Sending...';
+                    submitBtn.disabled = true;
+                    
+                    try {
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: new FormData(form),
+                            headers: { 'Accept': 'application/json' }
+                        });
+                        
+                        if (response.ok) {
+                            const msg = currentLang === 'fr' 
+                                ? '✓ Merci! Vous serez informé du lancement.'
+                                : '✓ Thank you! You\'ll be notified when we launch.';
+                            submitBtn.textContent = msg;
+                            submitBtn.style.background = '#10B981';
+                            form.querySelector('input[type="email"]').value = '';
+                            
+                            // Reset after 3 seconds
+                            setTimeout(() => {
+                                submitBtn.textContent = originalText;
+                                submitBtn.style.background = '';
+                                submitBtn.disabled = false;
+                            }, 3000);
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    } catch (error) {
+                        const errorMsg = currentLang === 'fr' 
+                            ? 'Erreur. Réessayez.'
+                            : 'Error. Please try again.';
+                        submitBtn.textContent = errorMsg;
+                        submitBtn.style.background = '#EF4444';
+                        
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.style.background = '';
+                            submitBtn.disabled = false;
+                        }, 2000);
+                    }
+                });
+            }
+        });
+        
+        // Start everything
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            updateOCenter();
+            initParticles();
+            animateCanvas();
+            setTimeout(playAnimation, 400);
+        });
+        
+        window.addEventListener('resize', resizeCanvas);
     </script>
 </body>
 </html>
